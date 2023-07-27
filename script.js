@@ -4,20 +4,20 @@ var submit = $("#submit");
 var quotesList = [];
 const button = document.getElementById("btn");
 
-//Stop me from capping out the searches!
-// button.addEventListener("click", getCharacterQuotes);
+// Stop me from capping out the searches!
+button.addEventListener("click", getCharacterQuotes);
 
-// function getCharacterQuotes() {
-//   fetch(
-//     "https://animechan.xyz/api/quotes/character?name=" +
-//       document.getElementById("searchBox").value
-//   )
-//     .then((response) => response.json())
-//     .then(function (data) {
-//       console.log(data);
-//       console.log(data[0].character);
-//     });
-// }
+function getCharacterQuotes() {
+  fetch(
+    "https://animechan.xyz/api/quotes/character?name=" +
+      document.getElementById("searchBox").value
+  )
+    .then((response) => response.json())
+    .then(function (data) {
+      console.log(data);
+      console.log(data[0].character);
+    });
+}
 
 const dummyData = [
   {
@@ -89,7 +89,10 @@ const dummyData = [
   },
 ];
 
-button.addEventListener("click", getCharacterQuotes);
+button.addEventListener("click", function(){
+    // getCharacterQuotes();  //currently commented out to prevent overusage of API. 
+    handleSearch();
+});
 
 function getCharacterQuotes() {
   console.log("Dummy Data to save searches :)");
@@ -100,3 +103,42 @@ function printList() {
   console.log("List" + quotesList);
 }
 printList();
+
+// search history codes below: 
+let searchHistory = JSON.parse(localStorage.getItem('searchHistory')); // Load search history from Local Storage.
+if(searchHistory===null){searchHistory=[];} //if none, set array to empty
+// Function to update search history in Local Storage
+function updateSearchHistory() {
+  localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+  displaySearchHistory();
+}
+
+// Function to display search history in the UI
+function displaySearchHistory() {
+    $('#searchBox').val(""); //reset search box, from any added input to "" or empty
+  const $searchHistoryList = $('.searchResults'); //set UI class 'searchResults' for any history list
+  $searchHistoryList.empty(); //empties that list. 
+
+  for (const searchCharacters of searchHistory) {
+    const listItem = $('<p>').text(searchCharacters); //create <p> with search history items
+    $searchHistoryList.append(listItem); //injects into html. 
+  }
+}
+
+// Function to handle citysearch submission. 
+function handleSearch() {
+  const max_history_length = 8; //max city history limit is 8. 
+  const searchTerm = $('#searchBox').val(); //search the value of search box. 
+
+  if (searchTerm === '') {return;}  //if searched city is empty, if true then exit function. 
+  // Check if the searched city, already exists in the history
+  const existingIndex = searchHistory.indexOf(searchTerm);
+  if (existingIndex !== -1) {
+    searchHistory.splice(existingIndex, 1);// If it exists, remove it from the history
+  }
+  searchHistory.unshift(searchTerm);// Add the new search term at the beginning of the history
+  // Limit the search history to the maximum length
+  if (searchHistory.length > max_history_length) {searchHistory.pop();} //pop()=add to front
+  updateSearchHistory();// Update the Local Storage and UI
+}
+updateSearchHistory();
