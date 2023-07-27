@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotaku</title>
+    <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+    <div>
+        <div>
+            <header><!--content wrapper-->
+                <div>
+                    <nav>
+                        <div>
+                            <h1>
+                                <a href="/">Quotaku</a>
+                            </h1>
+                        </div>
+                        <ul>
+                            <a href="#">
+                                <span>Home</span>
+                            </a>
+                            <a href="#">
+                                <span>About</span>
+                            </a>
+                        </ul>
+                    </nav>
+                </div> <!--end nav-->
+            </header>
+
+                <!--Side Search Bar-->
+            <section class="searchBar">
+                <div>
+                    <div>
+                        <div>
+                            <div>
+                                <h2>Search your Character here!</h2>
+                            </div>
+                                <section class="characterSearch">
+                                    <label for="searchBox"> Character Name:</label>
+                                    <input type="search" id="searchBox" name="???">
+                                    <button id="btn">search</button>
+                                </section>
+                        </div>    
+                            <section class="previousResults">
+                                <h3> Previous Search Results</h3>
+                                <!--This <div> is based on the search history with local storage variable link I dropped in our group chat 7/24. Feel free
+                          To adjust the id name as needed or for whatever makes the most sense to you :3 - CB-->
+                                <div id="lastResults"></div>
+                            </section>
+                        </div>
+                </div>    
+            </section><!--end side search bar-->
+
+            <!--Search Results Display-->
+            <main>
+                <div>
+                    <div>
+                        <h4>Results:</h4>
+                    </div>
+                    <section class="searchResults">
+                         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                         <script src="script.js"></script>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
