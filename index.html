@@ -21,9 +21,42 @@
                 <a class="navbar-item" href="https://www.google.com">
                     Home
                 </a>
-                <a class="navbar-item">
-                    About
-                </a>
+                		<!--about me form-->
+                        <a class="navbar-item" id="myBtn">
+                            About
+                        </a>
+                        <div id="aboutMe" class="modal">
+                            <div class="about-content">
+                                <span class="close">&times;</span>
+                                <p class="title is-1">About Us</p>
+                                <img class="modalimg" src="./assets/quotaku logo.png"/>
+                                <p>We sure do like our question marks!</p>
+                                <p class="subtitle is-4">??????????????????????????????????????????</p>
+                            </div>
+                        </div>
+
+                        <script>
+                            var modal = document.getElementById("aboutMe");
+                            
+                            var btn = document.getElementById("myBtn");
+        
+                            var span = document.getElementsByClassName("close")[0];
+        
+                            btn.onclick = function() {
+                            modal.style.display = "block";
+                            }
+                        
+                            span.onclick = function() {
+                            modal.style.display = "none";
+                            }
+    
+                            window.onclick = function(event) {
+                            if (event.target == modal) {
+                            modal.style.display = "none";
+                            }
+                            }
+                        </script>
+                    <!--end form-->
             </div>
         </div>
     </nav>
