@@ -96,8 +96,19 @@ button.addEventListener("click", function(){
 
 function getCharacterQuotes() {
   console.log("Dummy Data to save searches :)");
-  console.log(dummyData);
-}
+  
+  for (i = 0; i < Object.keys(dummyData).length; i++) {
+    var quoteCreation = document.createElement("ul");
+    quoteCreation.className = "quotesbullet";
+    quoteCreation.innerHTML = `
+      <li>${"\u273A" + dummyData[i].quote}</li>
+      `;
+    $("#characters").append(quoteCreation)
+
+    console.log(dummyData[i].quote);
+    
+  }
+}  
 
 function printList() {
   console.log("List" + quotesList);
