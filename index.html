@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quotaku</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="./styles.css"/>
+    <link rel="stylesheet" href="./styles.css" />
 </head>
+
 <body>
-    
-       
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item">
-            <h1 class="title is-1">Quotaku</h1>
-          </a>
-      
-        </div>
-      
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item" href="https://www.google.com">
-              Home
-            </a>
-      
             <a class="navbar-item">
-              About
+                <h1 class="title is-1">Quotaku</h1>
             </a>
-      
+
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="https://www.google.com">
+                    Home
+                </a>
+
+                <a class="navbar-item">
+                    About
+                </a>
+
             </div>
-          </div>
+        </div>
     </nav>
 
+    <!--
     <section class="searchBar">
         <h2 class="subtitle is-2">Search your Character here!</h2>
         <section class="characterSearch">
@@ -44,17 +45,53 @@
             <div id="lastResults"></div>
         </section>
     </section>
+-->
 
+    <section id="columns">
 
+        <!--Side Search Bar-->
+
+        <section class="searchBar">
+            <div>
+                <div>
+                    <div>
+                        <div>
+                            <h2 class="subtitle is-3">Search your Character here!</h2>
+                        </div>
+                        <section class="characterSearch">
+                            <label for="searchBox"> Character Name:</label>
+                            <input type="search" id="searchBox" name="???">
+                            <button class="button is-link" , id="btn" ,
+                                placeholder="enter character name">Search</button>
+                        </section>
+                    </div>
+                    <section class="previousResults">
+                        <h3 class="subtitle is-4"> Previous Search Results</h3>
+                        <div id="lastResults"></div>
+                    </section>
+                </div>
+            </div>
+        </section><!--end side search bar-->
+
+        <!--Search Results Display-->
+        <main>
+            <h4 class="subtitle is-3">Search Results of characters:</h4>
+            <section class="searchResults">
+                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                <script src="script.js"></script>
+            </section>
+        </main><!--end results display-->
+    </section>
 
     <!--Search Results Display-->
     <main>
         <h4 class="subtitle is-3">Results:</h4>
         <section class="searchResults">
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-                <script src="script.js"></script>
+            <script src="script.js"></script>
         </section>
     </main><!--end results display-->
+
 
 </body>
 
