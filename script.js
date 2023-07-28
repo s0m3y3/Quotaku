@@ -99,7 +99,6 @@ function getCharacterQuotes() {
   
   for (i = 0; i < Object.keys(dummyData).length; i++) {
     var quoteCreation = document.createElement("ul");
-    quoteCreation.className = "quotesbullet";
     quoteCreation.innerHTML = `
       <li>${"\u273A" + dummyData[i].quote}</li>
       `;
