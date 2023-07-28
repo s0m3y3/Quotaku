@@ -32,43 +32,28 @@
           </div>
     </nav>
 
-    
-        <!--Side Search Bar-->
     <section class="searchBar">
-        <div>
-            <div>
-                <div>
-                    <div>
-                        <h2 class="subtitle is-2">Search your Character here!</h2>
-                    </div>
-                        <section class="characterSearch">
-                            <label for="searchBox"> Character Name:</label>
-                            <input type="search" id="searchBox" name="???">
-                            <button class="button is-link", id="btn", placeholder="enter character name">Search</button>
+        <h2 class="subtitle is-2">Search your Character here!</h2>
+        <section class="characterSearch">
+            <label for="searchBox"> Character Name:</label>
+            <input type="search" id="searchBox" name="???">
+            <button class="button is-link", id="btn", placeholder="enter character name">Search</button>
+        </section>
+        <section class="previousResults">
+            <h3 class="subtitle is-3"> Previous Search Results</h3>
+            <div id="lastResults"></div>
+        </section>
+    </section>
 
-                        </section>
-                </div>    
-                    <section class="previousResults">
-                        <h3 class="subtitle is-3"> Previous Search Results</h3>
-                        <!--This <div> is based on the search history with local storage variable link I dropped in our group chat 7/24. Feel free
-                        To adjust the id name as needed or for whatever makes the most sense to you :3 - CB-->
-                        <div id="lastResults"></div>
-                    </section>
-                </div>
-        </div>    
-    </section><!--end side search bar-->
+
 
     <!--Search Results Display-->
     <main>
-        <div>
-            <div>
-                <h4 class="subtitle is-3">Results:</h4>
-            </div>
-            <section class="searchResults">
-                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-                    <script src="script.js"></script>
-            </section>
-        </div>
+        <h4 class="subtitle is-3">Results:</h4>
+        <section class="searchResults">
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                <script src="script.js"></script>
+        </section>
     </main><!--end results display-->
 
 </body>
