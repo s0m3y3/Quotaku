@@ -1,76 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quotaku</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="./styles.css"/>
+    <link rel="stylesheet" href="./styles.css" />
 </head>
+
 <body>
-    
-       
+
+
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item">
-            <h1 class="title is-1">Quotaku</h1>
-          </a>
-      
-        </div>
-      
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item" href="https://www.google.com">
-              Home
-            </a>
-      
             <a class="navbar-item">
-              About
+                <h1 class="title is-1">Quotaku</h1>
             </a>
-      
+
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="https://www.google.com">
+                    Home
+                </a>
+
+                <a class="navbar-item">
+                    About
+                </a>
+
             </div>
-          </div>
+        </div>
     </nav>
 
-    
+    <section id="columns">
         <!--Side Search Bar-->
-    <section class="searchBar">
-        <div>
+        <section class="searchBar">
             <div>
                 <div>
                     <div>
-                        <h2 class="subtitle is-2">Search your Character here!</h2>
-                    </div>
+                        <div>
+                            <br>
+                            <h2 class="subtitle is-3">Search your Character here!</h2>
+                        </div>
                         <section class="characterSearch">
                             <label for="searchBox"> Character Name:</label>
                             <input type="search" id="searchBox" name="???">
-                            <button class="button is-link", id="btn", placeholder="enter character name">Search</button>
-
+                            <button class="button is-link" , id="btn" ,
+                                placeholder="enter character name">Search</button>
                         </section>
-                </div>    
+                    </div>
                     <section class="previousResults">
-                        <h3 class="subtitle is-3"> Previous Search Results</h3>
+                        <h3 class="subtitle is-4"> Previous Search Results</h3>
                         <!--This <div> is based on the search history with local storage variable link I dropped in our group chat 7/24. Feel free
                         To adjust the id name as needed or for whatever makes the most sense to you :3 - CB-->
                         <div id="lastResults"></div>
                     </section>
                 </div>
-        </div>    
-    </section><!--end side search bar-->
-
-    <!--Search Results Display-->
-    <main>
-        <div>
-            <div>
-                <h4 class="subtitle is-3">Results:</h4>
             </div>
-            <section class="searchResults">
-                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-                    <script src="script.js"></script>
-            </section>
+        </section><!--end side search bar-->
+        <div>
+            <img src="Headphone Anime.jpg">
         </div>
-    </main><!--end results display-->
+        <!--Search Results Display-->
+        <main>
+            <div>
+                <div>
+                    <h4 class="subtitle is-3" id="results">Search Results of characters :
+                    </h4>
+                </div>
+                <section class="searchResults">
+                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                    <script src="script.js"></script>
+                </section>
+            </div>
+        </main>
 
+    </section>
 </body>
 
 </html>
