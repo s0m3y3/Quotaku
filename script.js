@@ -116,7 +116,7 @@ function updateSearchHistory() {
 // Function to display search history in the UI
 function displaySearchHistory() {
     $('#searchBox').val(""); //reset search box, from any added input to "" or empty
-  const $searchHistoryList = $('.searchResults'); //set UI class 'searchResults' for any history list
+  const $searchHistoryList = $('#lastResults'); //set UI class 'searchResults' for any history list
   $searchHistoryList.empty(); //empties that list. 
 
   for (const searchCharacters of searchHistory) {
