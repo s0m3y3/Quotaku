@@ -2,28 +2,39 @@
 
 .navbar
 {
-    background-color: rgb(198, 221, 189);
+    background-color:rgb(157, 152, 152);
     font-size: 25px;
 }
 
+#navbarBasicExample{
+}
+    
 h1{
     color: black;
 }
 
+h2.subtitle{
+    color: black;
+}
+
+h3.subtitle{
+    color: white;
+}
+
+p{
+    font-size: 25px;    
+}
 #navbarBasicExample{
     float:right;
-    
-}
-h2{
 }
 
 .searchBar{
     background-image:url(Headphone\ Anime.jpg);
     background-size: 450px 800px;
-    opacity: 78%;
+    opacity: 100%; 
     width: 450px;
     height: 800px;
-    color: black;
+    color: white;
 }
 
 #columns{
@@ -34,5 +45,4 @@ h2{
 img{
     height:800px;
 }
-
 
