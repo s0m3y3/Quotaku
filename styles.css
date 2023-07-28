@@ -14,12 +14,16 @@ h1{
     float:right;
     
 }
+h2{
+}
 
 .searchBar{
-    background-color:lightblue;
+    background-image:url(Headphone\ Anime.jpg);
+    background-size: 450px 800px;
+    opacity: 78%;
     width: 450px;
     height: 800px;
-    align-items: center;
+    color: black;
 }
 
 #columns{
