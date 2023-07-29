@@ -1,23 +1,34 @@
-const settings = {
-	async: true,
-	crossDomain: true,
-	url: 'https://myanimelist.p.rapidapi.com/anime/34134',
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7',
-		'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
-	}
-};
 
-$.ajax(settings).done(function (response) {
-	console.log(response);
+// WORKS: MAL API 
+// const settings = {
+// 	async: true,
+// 	crossDomain: true,
+// 	url: 'https://myanimelist.p.rapidapi.com/anime/34134',
+// 	method: 'GET',
+// 	headers: {
+// 		'X-RapidAPI-Key': '852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7',
+// 		'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
+// 	}
+// };
+
+// $.ajax(settings).done(function (response) {
+// 	console.log(response);
+// });
+
+
+let charID = 73935; //char ID
+let jikanapi =`https://api.jikan.moe/v4/characters/${charID}/full`
+console.log("jikanapi(line~20): "+jikanapi);
+fetch(jikanapi)
+.then((response) => response.json())
+.then(function (data) {
+    console.log(data);
 });
 
 
 // const settings = {
 // 	async: true,
 // 	crossDomain: true,
-// 	url: 'https://myanimelist.p.rapidapi.com/anime/1',  //anime based on ID. NOTE: #1 = Cowboy Bebop
 //     // url: 'https://myanimelist.p.rapidapi.com/anime/search/Death%20Note',  //search anime
 // 	method: 'GET',
 // 	headers: {
@@ -31,38 +42,6 @@ $.ajax(settings).done(function (response) {
 // });
 
 
-
-// const settings = {
-// 	async: true,
-// 	crossDomain: true,
-// 	url: 'https://kitsu.io/api/edge/characters/1',
-// 	method: 'GET',
-// 	headers: {
-//         'Accept': 'application/vnd.api+json',
-//         'Content-Type': 'application/vnd.api+json',
-//         'CLIENT_ID': 'dd031b32d2f56c990b1425efe6c42ad847e7fe3ab46bf1299f05ecd856bdb7dd'
-// 	}
-// };
-
-// $.ajax(settings).done(function (response) {
-// 	console.log(response);
-// });
-
-//WORKS!! Pulls anime movies list, based on character names. 
-// const settings = {
-// 	async: true,
-// 	crossDomain: true,
-// 	url: 'https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=One%20piece',
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7',
-// 		'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
-// 	}
-// };
-
-// $.ajax(settings).done(function (response) {
-// 	console.log(response);
-// });
 
 
 
@@ -104,7 +83,7 @@ MAL_onepunchman_animesearch = [
         "myanimelist_id": 52807
     }
 ];
-
+// https://api.jikan.moe/v4/characters/73935/full   //link for jikan character ID search. Most helpful.  
 MAL_onepuchman_id34134 = {
     "picture_url": "https://cdn.myanimelist.net/images/anime/1247/122044.jpg",
     "alternative_titles": {
@@ -299,3 +278,44 @@ MAL_onepuchman_id34134 = {
     "synopsis": "In the wake of defeating Boros and his mighty army, Saitama has returned to his unremarkable everyday life in Z-City. However, unbeknownst to him, the number of monsters appearing is still continuously on the rise, putting a strain on the Hero Association's resources. Their top executives decide on the bold move of recruiting hoodlums in order to help in their battle. But during the first meeting with these potential newcomers, a mysterious man calling himself Garou makes his appearance. Claiming to be a monster, he starts mercilessly attacking the crowd.\n\r\nThe mysterious Garou continues his rampage against the Hero Association, crushing every hero he encounters. He turns out to be the legendary martial artist Silverfang's best former disciple and seems driven by unknown motives. Regardless, this beast of a man seems unstoppable. Intrigued by this puzzling new foe and with an insatiable thirst for money, Saitama decides to seize the opportunity and joins the interesting martial arts competition.\n\r\nAs the tournament commences and Garou continues his rampage, a new great menace reveals itself, threatening the entire human world. Could this finally be the earth-shattering catastrophe predicted by the great seer Madame Shibabawa?\n\r\n[Written by MAL Rewrite]",
     "title_ov": "One Punch Man 2nd Season"
 }
+
+arraylength = MAL_onepuchman_id34134.characters.length;
+characterlist = {}
+
+for (i=0;i<arraylength;i++){
+    def = MAL_onepuchman_id34134.characters[i].myanimelist_url;
+    abc = MAL_onepuchman_id34134.characters[i].name;
+    const inputString = def;
+    const pattern = /-?\d+(\.\d+)?/g; // Match decimal numbers with optional sign
+    
+    const numbersArray = inputString.match(pattern);
+    console.log(abc + ": " + numbersArray); // Output: ["10.99", "-5.5"]
+    
+};
+
+
+//todo: 
+
+
+
+
+
+
+//************* delete me??? old code: **********
+
+//WORKS!! Pulls anime movies list, based on character names. 
+//back up API 
+// const settings = {
+// 	async: true,
+// 	crossDomain: true,
+// 	url: 'https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=One%20piece',
+// 	method: 'GET',
+// 	headers: {
+// 		'X-RapidAPI-Key': '852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7',
+// 		'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
+// 	}
+// };
+
+// $.ajax(settings).done(function (response) {
+// 	console.log(response);
+// });
