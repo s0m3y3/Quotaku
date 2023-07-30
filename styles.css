@@ -34,6 +34,8 @@ p{
     opacity: 100%; 
     width: 450px;
     height: 800px;
+    min-width: 450px;
+    max-width: 450px;
     color: white;
 }
 
