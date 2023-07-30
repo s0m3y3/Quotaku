@@ -8,3 +8,16 @@ N/A. Web based.
 
 ## Usage
 Search your favorite anime characters, and get their well-known quotes! 
+
+## Contributors:
+
+Dtrieu1, svnkite, s0m3y3, biancasmundy
+
+## Credits: 
+
+Anime Chan API: https://animechan.xyz
+My Anime List API: https://myanimelist.net/
+Jikan API: https://jikan.moe/
+
+Third Party:
+Rapid API: https://rapidapi.com/hub
