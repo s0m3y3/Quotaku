@@ -1,51 +1,89 @@
 
+let inputString = "One punch man";
+let pattern = / /g; // regrex. Match all spaces globally using the 'g' flag
+let MAL_animesearch = inputString.replace(pattern, "%20");//repace any spacing with "%20", required for MAL API search. 
+let characterID = ""; //ID that MAL API and Jikan API use. 
 // WORKS: MAL API 
-// const settings = {
-// 	async: true,
-// 	crossDomain: true,
-// 	url: 'https://myanimelist.p.rapidapi.com/anime/34134',
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7',
-// 		'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
-// 	}
-// };
+let animeID_title = [];
+let animeIDlist = [];
+let animeID = [];
+let characterlist = [];
 
-// $.ajax(settings).done(function (response) {
-// 	console.log(response);
-// });
-
-
-let charID = 73935; //char ID
-let jikanapi =`https://api.jikan.moe/v4/characters/${charID}/full`
-console.log("jikanapi(line~20): "+jikanapi);
-fetch(jikanapi)
-.then((response) => response.json())
-.then(function (data) {
-    console.log(data);
+function MAL_namesearch(){  //Using RapidAPI, to grab MAL API.
+    const settings = {
+        async: true,
+        crossDomain: true,
+        url: `https://myanimelist.p.rapidapi.com/search/${MAL_animesearch}`, //MAL API Link
+        //other searchable link below: 
+        // url: `https://myanimelist.p.rapidapi.com/anime/${animeID}`   //search via animeID
+        // url: `https://myanimelist.p.rapidapi.com/anime/search/${anime_name}/${page}` //page = display how many page results.
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7',
+            'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
+        }
+    };
+    $.ajax(settings).done(function (response) { //pulling character data from MAL_data. 
+        let dataMAL = response;
+        let animeIDtest = [];
+        let animetitletest = [];
+        for (i=0;i<MAL_onepunchman_animesearch.length;i++){ 
+            animeIDtest.push(MAL_onepunchman_animesearch[i].myanimelist_id); //input anime ID into array
+            animetitletest.push(MAL_onepunchman_animesearch[i].title) //input anime title into array
+        }
+        animeID_title = animetitletest.map((title, index) => {return { title, id: animeIDtest[index] };})  //combines 2arrays (anime title & ID) into an array object.
 });
+};
+
+animeID = animeIDlist[0];
+function MAL_IDsearch(animeID){  //Using RapidAPI, to grab MAL API.
+    const settings = {
+        async: true,
+        crossDomain: true,
+        url: `https://myanimelist.p.rapidapi.com/anime/${animeID}`,   //search via animeID
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7',
+            'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
+        }
+    };
+    $.ajax(settings).done(function (response) { //pulling character data from MAL_data. 
+        let dataMAL = response;  //storing received data into dataMAL
+        arraylength = dataMAL.characters.length; //check how many characters are in the array. 
+        charNAMEtest=[];
+        charidtest = [];
+        charURLtest = [];
+
+        for (i=0;i<arraylength;i++){  //loop to add character URL & character to their respective array
+            charURLtest.push(dataMAL.characters[i].myanimelist_url); //adds character url into array. The URL also contains character ID.
+            charNametest.push(dataMAL.characters[i].name) //adds character name into array.
+        };
+
+        charidtest = charurltest.map(url => { //separate the character ID from character url. using regrex. 
+            const regex = /\/(\d+)\//; // Regular expression to match the numbers between slashes. aka to grab only characterID, as they are the only number in link.
+            const match = url.match(regex);
+            return match ? match[1] : null; // Return the matched number or null if no match found
+        });
+        
+        characterlist = charnametest.map((name, index) => {return { name, id: charidtest[index] };}) //combines two arrays (character name & character ID) into array objects
+    });
+};
+
+characterID = 73935;  //this ID is for saitama. 
+let photoURL = "";
+function getCharacterinfo() {
+    fetch(`https://api.jikan.moe/v4/characters/${characterID}`) //jikan API data fetch, using character ID from MAL API. 
+      .then((response) => response.json())
+      .then(function (data) {
+        dataJikan = data 
+        console.log(data);
+        photoURL = dataJikan.data.images.jpg.image_url;
+      });
+}
+// getCharacterinfo();
 
 
-// const settings = {
-// 	async: true,
-// 	crossDomain: true,
-//     // url: 'https://myanimelist.p.rapidapi.com/anime/search/Death%20Note',  //search anime
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7',
-// 		'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
-// 	}
-// };
-
-// $.ajax(settings).done(function (response) {
-// 	console.log(response);
-// });
-
-
-
-
-
-
+//MAL anime search using "one punch man" data 
 MAL_onepunchman_animesearch = [
     {
         "myanimelist_url": "https://myanimelist.net/anime/34134/One_Punch_Man_2nd_Season",
@@ -83,7 +121,29 @@ MAL_onepunchman_animesearch = [
         "myanimelist_id": 52807
     }
 ];
-// https://api.jikan.moe/v4/characters/73935/full   //link for jikan character ID search. Most helpful.  
+
+// animeID_title = [];
+// animeIDtest = [];
+// animetitletest = [];
+// for (i=0;i<MAL_onepunchman_animesearch.length;i++){
+//     animeIDtest.push(MAL_onepunchman_animesearch[i].myanimelist_id);
+//     animetitletest.push(MAL_onepunchman_animesearch[i].title)
+// }
+// animeID_title = animetitletest.map((title, index) => {return { title, id: animeIDtest[index] };});
+// console.log(animeID_title);
+
+
+// animetitletest = ['One Punch Man 2nd Season', 'One Punch Man Specials', 'One Punch Man', 'One Punch Man 2nd Season Commemorative Special', 'One Punch Man 3'];
+// animeIDtest [34134, 31772, 30276, 39652, 52807];
+
+// console.log(MAL_onepunchman_animesearch.length);
+// console.log(MAL_onepunchman_animesearch[0].title);
+// console.log(MAL_onepunchman_animesearch[0].myanimelist_id);
+
+
+// // https://api.jikan.moe/v4/characters/73935/full   //link for jikan character ID search. Most helpful.  
+
+//Dummy Data below is a pull from MAL, using anime ID of 34134. 
 MAL_onepuchman_id34134 = {
     "picture_url": "https://cdn.myanimelist.net/images/anime/1247/122044.jpg",
     "alternative_titles": {
@@ -279,27 +339,51 @@ MAL_onepuchman_id34134 = {
     "title_ov": "One Punch Man 2nd Season"
 }
 
-arraylength = MAL_onepuchman_id34134.characters.length;
-characterlist = {}
+// arraylength = MAL_onepuchman_id34134.characters.length;
+// let characterlist = [];
+// charnametest=[];
+// charidtest = [];
+// charurltest = [];
 
-for (i=0;i<arraylength;i++){
-    def = MAL_onepuchman_id34134.characters[i].myanimelist_url;
-    abc = MAL_onepuchman_id34134.characters[i].name;
-    const inputString = def;
-    const pattern = /-?\d+(\.\d+)?/g; // Match decimal numbers with optional sign
-    
-    const numbersArray = inputString.match(pattern);
-    console.log(abc + ": " + numbersArray); // Output: ["10.99", "-5.5"]
-    
-};
+// for (i=0;i<arraylength;i++){
+//     charurltest.push(MAL_onepuchman_id34134.characters[i].myanimelist_url); //adds character url into array. The URL also contains character ID.
+//     charnametest.push(MAL_onepuchman_id34134.characters[i].name) //adds character name into array.
+// };
 
+// charidtest = charurltest.map(url => { //separate the character ID from character url. 
+//     const regex = /\/(\d+)\//; // Regular expression to match the numbers between slashes
+//     const match = url.match(regex);
+//     return match ? match[1] : null; // Return the matched number or null if no match found
+// });
+// characterlist = charnametest.map((name, index) => {return { name, id: charidtest[index] };}) //combines two arrays (character name & character ID) into array objects
+// console.log(characterlist);
+// console.log("charidtest: "+charidtest);
 
-//todo: 
-
-
-
-
-
+//dummydata_Jikan. Using characterID of 73935 (saitama), as a search. 
+dummydata_Jikan = {
+    "data": {
+        "mal_id": 73935,
+        "url": "https://myanimelist.net/character/73935/Saitama",
+        "images": {
+            "jpg": {
+                "image_url": "https://cdn.myanimelist.net/images/characters/11/294388.jpg"
+            },
+            "webp": {
+                "image_url": "https://cdn.myanimelist.net/images/characters/11/294388.webp",
+                "small_image_url": "https://cdn.myanimelist.net/images/characters/11/294388t.webp"
+            }
+        },
+        "name": "Saitama",
+        "name_kanji": "サイタマ",
+        "nicknames": [
+            "Caped Baldy"
+        ],
+        "favorites": 46857,
+        "about": "Race: Human\nAge: 25\nHeight: 175 cm (5'9\")\nWeight: 70 kg (154 lbs)\nLocation: Z-City\nAbilities: Immeasurable Strength, Immeasurable Speed and Reflexes, Infinite Stamina, Supernatural Senses, Invulnerability, Indomitable Will\nOccupation: Superhero\nLevel:\n\nAffiliation: Hero Association\nPartner(s): Genos\n\nSaitama is the most powerful hero alive. Having apparently trained himself to superhuman condition, Saitama faces an existential crisis as he is now too powerful to gain any thrill from his heroic deeds.\n\nHe is registered with the Heroes Association as a C-Class Superhero and is tasked to defend Z-City against Mysterious Beings.\n\nSaitama is usually deliberately drawn in a simpler style than other characters, with a very rounded head and only a simple mouth and eyes. When drawn in a more 'action-oriented' style with more detail, Saitama is revealed to have sharp features, dangerous looking eyes, and chiseled musculature. His costume is a plain yellow jumpsuit with a short zipper at the collar and a belt. The costume is finished out by an ensemble of red boots and gloves, and a white cape.\n\nFor a superhero, Saitama is rather laid back. Because even the mightiest foes pose no challenge to him, he doesn't take his hero work very seriously. In spite of this, he is constantly searching for an opponent that can challenge him, since his superhero work is beginning to bore him because it's too easy. The combination of his attitude, unstoppable strength, and distinctively simple and 'unimpressive' appearance often cause his battles to become anticlimactic. Saitama will usually allow his opponents to rant about their motives and power up into their strongest forms before suddenly and nonchalantly obliterating them with one punch.\n\n(Source: One Punch-Man Wiki)"
+    }
+}
+ 
+// console.log("image link: "+dummydata_Jikan.data.images.jpg.image_url);
 
 //************* delete me??? old code: **********
 
@@ -318,4 +402,15 @@ for (i=0;i<arraylength;i++){
 
 // $.ajax(settings).done(function (response) {
 // 	console.log(response);
+// });
+
+
+//WORKS Jikan
+// let charID = 73935; //char ID
+// let jikanapi =`https://api.jikan.moe/v4/characters/${charID}/full`
+// console.log("jikanapi(line~20): "+jikanapi);
+// fetch(jikanapi)
+// .then((response) => response.json())
+// .then(function (data) {
+//     console.log(data);
 // });
