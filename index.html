@@ -22,11 +22,11 @@
                     Home
                 </a>
                 <!--about me form-->
-                <a class="navbar-item" id="myBtn">
+                <a class="navbar-item" id="aboutBtn">
                     About
                 </a>
                 <div id="aboutMe" class="modal">
-                    <div class="about-content">
+                    <div class="modal-content">
                         <span class="close">&times;</span>
                         <p class="title is-1">About Us</p>
                         <img class="modalimg" src="./assets/quotaku logo.png" />
@@ -38,7 +38,7 @@
                 <script>
                     var modal = document.getElementById("aboutMe");
 
-                    var btn = document.getElementById("myBtn");
+                    var btn = document.getElementById("aboutBtn");
 
                     var span = document.getElementsByClassName("close")[0];
 
@@ -91,12 +91,47 @@
 
         <!--Search Results Display-->
         <main>
-            <h4 id="characters" class="subtitle is-3">Search Results of characters:</h4>
-            <section class="searchResults">
-                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-                <script src="script.js"></script>
-                <script src="script_y.js"></script>
-            </section>
+            <h4 class="subtitle is-3">Search Results of Character:</h4>
+
+
+            <button class='badge' id="quotesBadge">
+                <div class='badge-text' id="quotesBadge">Quotes</div>
+            </button>
+
+            <div id="quotesForm" class="modal">
+                <div class="modal-content">
+                    <span class="closeQuotes">&times;</span>
+                    <p class="subtitle is-3">Quotes:</p>
+                    <p class="has-text-weight-semibold is-size-5" id="characters">
+                        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                        <script src="script.js"></script>
+                        <script src="script_y.js"></script>
+                    </p>
+                </div>
+            </div>
+
+            <script>
+                var modal = document.getElementById("quotesForm");
+                
+                var btn = document.getElementById("quotesBadge");
+
+                var span = document.getElementsByClassName("closeQuotes")[0];
+
+                btn.onclick = function() {
+                 modal.style.display = "block";
+                }
+                span.onclick = function() {
+                  modal.style.display = "none";
+                }
+                
+                window.onclick = function(event) {
+                  if (event.target == modal) {
+                    modal.style.display = "none";
+                  }
+                }
+            
+            </script>
+
         </main><!--end results display-->
     </section>
 
