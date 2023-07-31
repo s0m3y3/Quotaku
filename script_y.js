@@ -3,7 +3,7 @@
 // let characterlist = []; 
 // let searchedcharacter =""; 
 // let animeID_title = []; // array for MAL_AnimeNameSearch() to input data into
-let animeID = []; //array for MAL_AnimeNameSearch() to input data into
+// let animeID = []; //array for MAL_AnimeNameSearch() to input data into
 // let animeIDlist = []; // array for MAL API to input data into
 
 // function MAL_AnimeNameSearch(){  //Using RapidAPI, to grab MAL API.
@@ -40,19 +40,19 @@ let animeID = []; //array for MAL_AnimeNameSearch() to input data into
 
 // MAL_AnimeNameSearch();
 
-let aabc = [
-    {
-        "myanimelist_url": "https://myanimelist.net/anime/31772/One_Punch_Man_Specials",
-        "title": "One Punch Man Specials",
-        "description": "Specials included in the Blu-ray and DVD releases of One Punch Man.",
-        "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/1452/97840.jpg?s=2ba3ee89bb332f3de604650370affe83",
-        "myanimelist_id": 31772
-    }
-]
-animeID.push(aabc[0].myanimelist_id)
-console.log("hey" +aabc.length );
-console.log(aabc);
-console.log(aabc[0].myanimelist_id);
+// let aabc = [
+//     {
+//         "myanimelist_url": "https://myanimelist.net/anime/31772/One_Punch_Man_Specials",
+//         "title": "One Punch Man Specials",
+//         "description": "Specials included in the Blu-ray and DVD releases of One Punch Man.",
+//         "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/1452/97840.jpg?s=2ba3ee89bb332f3de604650370affe83",
+//         "myanimelist_id": 31772
+//     }
+// ]
+// animeID.push(aabc[0].myanimelist_id)
+// console.log("hey" +aabc.length );
+// console.log(aabc);
+// console.log(aabc[0].myanimelist_id);
 
 
 // let inputString = "One punch man";
@@ -535,3 +535,4 @@ testcharacterlist = [
 // .then(function (data) {
 //     console.log(data);
 // });
+
