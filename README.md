@@ -11,7 +11,7 @@ Search your favorite anime characters, and get their well-known quotes!
 
 ## Contributors:
 
-Dtrieu1, svnkite, s0m3y3, biancasmundy
+Dtrieu1, svnkite, s0m3y3, biancawonka
 
 ## Credits: 
 
