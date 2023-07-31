@@ -49,74 +49,6 @@ img{
     height:800px;
 }
 
-/* About Me (background) */
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    padding-top: 100px; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color:rgb(157, 152, 152);
-    background-color: rgba(0,0,0,0.9); 
-  }
-  /* About Me Content */
-  .modal-content {
-    background-color: rgb(157, 152, 152);
-    margin: auto;
-    padding: 20px;
-    border-radius: 25px;
-    border: none;
-    padding: 20px;
-    width: 60%;
-    height: 600px;
-  }
-  
-  .modalimg {
-      border-radius: 15px 50px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 60%;
-      max-height: 60%
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #000000;
-    float: right;
-    font-size: 40px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-li{
-    font-size:20px;
-}
-
-  .closeQuotes {
-    color: #000000;
-    float: right;
-    font-size: 40px;
-    font-weight: bold;
-  }
-  
-  .closeQuotes:hover,
-  .closeQuotes:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
 li{
     font-size:20px;
 }
@@ -169,3 +101,90 @@ li{
     box-shadow: 0px 0.5rem 1rem rgba(0, 0, 0, .5);
     transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
 }
+
+/* Quotes Display (background) */
+.quotes {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color:rgb(157, 152, 152);
+    background-color: rgba(0,0,0,0.9); 
+  }
+
+/* The Close Button */
+.close {
+    color: #000000;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    }
+
+li{
+    font-size:20px;
+}
+
+    .closeQuotes {
+    color: #000000;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    }
+    
+    .closeQuotes:hover,
+    .closeQuotes:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    }
+    
+  /* Quotes Content */
+  .quotes-content {
+    background-color: rgb(157, 152, 152);
+    margin: auto;
+    padding: 20px;
+    border-radius: 25px;
+    border: none;
+    padding: 20px;
+    width: 60%;
+    height: auto;
+  }
+  
+  .quotesimg {
+      border-radius: 15px 50px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 60%;
+      max-height: 60%
+  }
+
+  /*About Modal (used Bulma) */
+  #modal.modal {
+    align-items: start;
+    flex-direction: row;
+    justify-content: end;
+  }
+  #modal .modal-card {
+    max-height: 100%;
+    min-height: 100%;
+    width: 300px;
+    margin-right: 0;
+  }
+  @media screen and (min-width: 769px) {
+    #modal .modal-card {
+      margin-right: 0;
+    }
+  }
