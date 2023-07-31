@@ -34,6 +34,8 @@ p{
     opacity: 100%; 
     width: 450px;
     height: 800px;
+    min-width: 450px;
+    max-width: 450px;
     color: white;
 }
 
@@ -46,8 +48,62 @@ img{
     height:800px;
 }
 
-/* About Me (background) */
-.modal {
+
+li{
+    font-size:20px;
+}
+
+/* Quotes link */
+.badge {
+    display: block;
+    position: relative;
+    width: 20rem;
+    height: 20rem;
+    cursor: pointer;
+    background: url(https://placewaifu.com/image/200?greyscale) no-repeat 100% 50%;
+    background-size: 120%;
+    border-radius: 50%;
+    transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+    box-shadow: 0px 0.5rem 1rem rgba(0, 0, 0, .75);
+}
+.badge:hover {
+    box-shadow: 0px 0.5rem 2rem rgba(0, 0, 0, .75);
+    background-position: 0% 50%;
+}
+.badge-text:hover {
+    transform: rotate(-45deg) translate(0px) rotate(-315deg);
+    background: rgba(102, 51, 153, .5);
+    width: 20rem;
+    letter-spacing: 1rem;
+    line-height: 20rem;
+    height: 20rem;
+    margin-top: -10rem;
+    margin-left: -10rem;
+    transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1), letter-spacing 1.5s ease-out;
+}
+.badge-text {
+    display: block;
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    line-height: 10rem;
+    left: 50%;
+    top: 50%;
+    margin-top: -5rem;
+    margin-left: -5rem;
+    font-size: 2rem;
+    font-family: Raleway, sans-serif;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    background: rebeccapurple;
+    transform: rotate(-180deg) translate(-10rem) rotate(180deg);
+    box-shadow: 0px 0.5rem 1rem rgba(0, 0, 0, .5);
+    transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+/* Quotes Display (background) */
+.quotes {
     display: none; 
     position: fixed; 
     z-index: 1; 
@@ -57,22 +113,57 @@ img{
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: rgb(198, 221, 189);
-    background-color: rgba(0,0,0,0.4); 
+    background-color:rgb(157, 152, 152);
+    background-color: rgba(0,0,0,0.9); 
   }
-  /* About Me Content */
-  .about-content {
-    background-color: rgb(198, 221, 189);
+
+/* The Close Button */
+.close {
+    color: #000000;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    }
+
+li{
+    font-size:20px;
+}
+
+    .closeQuotes {
+    color: #000000;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    }
+    
+    .closeQuotes:hover,
+    .closeQuotes:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    }
+    
+  /* Quotes Content */
+  .quotes-content {
+    background-color: rgb(157, 152, 152);
     margin: auto;
     padding: 20px;
     border-radius: 25px;
     border: none;
     padding: 20px;
     width: 60%;
-    height: 600px;
+
+    height: auto;
   }
   
-  .modalimg {
+  .quotesimg {
       border-radius: 15px 50px;
       display: block;
       margin-left: auto;
@@ -80,22 +171,22 @@ img{
       max-width: 60%;
       max-height: 60%
   }
-  
-  /* The Close Button */
-  .close {
-    color: #000000;
-    float: right;
-    font-size: 40px;
-    font-weight: bold;
+
+  /*About Modal (used Bulma) */
+  #modal.modal {
+    align-items: start;
+    flex-direction: row;
+    justify-content: end;
   }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+  #modal .modal-card {
+    max-height: 100%;
+    min-height: 100%;
+    width: 300px;
+    margin-right: 0;
+  }
+  @media screen and (min-width: 769px) {
+    #modal .modal-card {
+      margin-right: 0;
+    }
   }
 
-li{
-    font-size:20px;
-}
