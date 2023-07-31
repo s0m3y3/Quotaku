@@ -7,7 +7,6 @@
 }
 
 #navbarBasicExample{
-    
 }
     
 h1{
@@ -48,6 +47,7 @@ p{
 img{
     height:800px;
 }
+
 
 li{
     font-size:20px;
@@ -159,6 +159,7 @@ li{
     border: none;
     padding: 20px;
     width: 60%;
+
     height: auto;
   }
   
@@ -188,3 +189,4 @@ li{
       margin-right: 0;
     }
   }
+
