@@ -30,12 +30,12 @@ p{
 
 .searchBar{
     background-image:url(Headphone\ Anime.jpg);
-    background-size: 450px 800px;
+    background-size: 500px 900px;
     opacity: 100%; 
-    width: 450px;
-    height: 800px;
-    min-width: 450px;
-    max-width: 450px;
+    width: 500px;
+    height: 900px;
+    min-width: 500px;
+    max-width: 500px;
     color: white;
 }
 
@@ -57,6 +57,7 @@ li{
 .badge {
     display: block;
     position: relative;
+    margin-left: 70px;
     width: 20rem;
     height: 20rem;
     cursor: pointer;
@@ -66,6 +67,7 @@ li{
     transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
     box-shadow: 0px 0.5rem 1rem rgba(0, 0, 0, .75);
 }
+
 .badge:hover {
     box-shadow: 0px 0.5rem 2rem rgba(0, 0, 0, .75);
     background-position: 0% 50%;
@@ -106,11 +108,11 @@ li{
 }
 
 #indent{
-    text-indent: 10px;
+    text-indent: 30px;
 }
 
 #character_name{
-    font-size: 20px;
+    font-size: 22px;
 }
 
 /* Quotes Display (background) */
@@ -201,3 +203,6 @@ li{
     }
   }
 
+main{
+    text-indent: 60px;
+}
