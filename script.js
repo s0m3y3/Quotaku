@@ -82,6 +82,7 @@ const dummyData = [
     quote: "I'm just a guy who's a hero for fun.",
   },
 ];
+//workingCharacterList = ["saitama","bulma"];
 
 function reset() {
   quotesList = [];
@@ -92,6 +93,11 @@ function reset() {
   animetitle = "";
   animeIDlist = [];
   photoURL = "./assets/imageplaceholder1.jpg";
+}
+
+function imageDefault(){
+  // $(".badge").css("background-image", "url(/assets/imageplaceholder1.jpg)");
+  $("#quotesimg").attr("src", './assets/imageplaceholder1.jpg');
 }
 
 function getCharacterQuotes() {
@@ -114,10 +120,14 @@ function getCharacterQuotes() {
 
         // console.log(data[i].quote);
       }
-      if (animetitle !== "") {
-        //if anime title is not empty. This title is pulled from Anime Chan API.
+      $("#charactername").val(data[0].character);
+      $("#quotesimg").attr("src", photoURL); //adds image into html
+      $(".badge").css("background-image", `url(${photoURL})`);
+      if(animetitle !==""){ //if anime title is not empty. This title is pulled from Anime Chan API. 
+
         MAL_AnimeNameSearch(); //MAL API search for anime titles
       }
+
     });
 }
 
@@ -202,9 +212,10 @@ function MAL_IDsearch(animeID) {
     console.log(dataMAL2);
     console.log("dataMal2.character.length: " + dataMAL2.characters.length);
     let arraylength = dataMAL2.characters.length; //check how many characters are in the array.
-    let charName = [],
-      charid = [],
-      charURL = [];
+    let charName = [];
+    let charid = [];
+    let charURL = [];
+
 
     for (i = 0; i < arraylength; i++) {
       //loop to add character URL & character to their respective array
@@ -242,7 +253,6 @@ function Jikan_CharacterImageSearch(characterID) {
     .then(function (Jikandata) {
       photoURL = Jikandata.data.images.jpg.image_url; //photo url for the character
       $("#quotesimg").attr("src", photoURL); //adds image into html
-      // $("#photohere").attr("src", photoURL); //adds image into html
       $(".badge").css("background-image", `url(${photoURL})`);
       console.log("image pulled: " + photoURL);
     });
