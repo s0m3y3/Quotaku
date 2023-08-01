@@ -84,15 +84,15 @@ const dummyData = [
 ];
 //workingCharacterList = ["saitama","bulma"];
 
-function reset(){
+function reset() {
   quotesList = [];
   animeID = [];
   characterID = [];
-  characterlist=[];
-  searchedcharacter ="";
-  animetitle="";
-  animeIDlist=[];
-  photoURL ="./assets/imageplaceholder1.jpg";
+  characterlist = [];
+  searchedcharacter = "";
+  animetitle = "";
+  animeIDlist = [];
+  photoURL = "./assets/imageplaceholder1.jpg";
 }
 
 function imageDefault(){
@@ -120,11 +120,11 @@ function getCharacterQuotes() {
 
         // console.log(data[i].quote);
       }
-
       $("#charactername").val(data[0].character);
       $("#quotesimg").attr("src", photoURL); //adds image into html
       $(".badge").css("background-image", `url(${photoURL})`);
       if(animetitle !==""){ //if anime title is not empty. This title is pulled from Anime Chan API. 
+
         MAL_AnimeNameSearch(); //MAL API search for anime titles
       }
 
@@ -215,6 +215,7 @@ function MAL_IDsearch(animeID) {
     let charName = [];
     let charid = [];
     let charURL = [];
+
 
     for (i = 0; i < arraylength; i++) {
       //loop to add character URL & character to their respective array
