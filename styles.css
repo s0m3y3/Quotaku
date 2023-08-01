@@ -105,6 +105,10 @@ li{
     height: 30px;
 }
 
+#indent{
+    text-indent: 10px;
+}
+
 #character_name{
     font-size: 20px;
 }
