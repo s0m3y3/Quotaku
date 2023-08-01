@@ -60,7 +60,7 @@ li{
     width: 20rem;
     height: 20rem;
     cursor: pointer;
-    background: url(https://placewaifu.com/image/200?greyscale) no-repeat 100% 50%;
+    background: url(https://source.unsplash.com/random/1000x1000) no-repeat 100% 50%;
     background-size: 120%;
     border-radius: 50%;
     transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);

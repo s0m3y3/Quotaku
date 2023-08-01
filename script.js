@@ -10,6 +10,7 @@ let searchedcharacter ="";
 // let animeID_title = []; // array for MAL_AnimeNameSearch() to input data into
 let animeID = []; //array for MAL_AnimeNameSearch() to input data into
 let animeIDlist = []; // array for MAL API to input data into
+let photoURL = "";
 
 //due to very limited API searches for animechan.xyz... This dummydata was created to test code. To be deleted. 
 const dummyData = [
@@ -82,6 +83,17 @@ const dummyData = [
   },
 ];
 
+function reset(){
+  quotesList = [];
+  animeID = [];
+  characterID = [];
+  characterlist=[];
+  searchedcharacter ="";
+  animetitle="";
+  animeIDlist=[];
+  photoURL ="./assets/imageplaceholder1.jpg";
+}
+
 function getCharacterQuotes() {
   fetch(
     "https://animechan.xyz/api/quotes/character?name=" +
@@ -111,6 +123,7 @@ function getCharacterQuotes() {
 //dummy function. to be deleted. 
 function dummygetCharacterQuotes(){
   animetitle = dummyData[0].anime;
+  $("#charactername").append(searchedcharacter);
   for (i = 0; i < Object.keys(dummyData).length; i++) {
   var quoteCreation = document.createElement("ul");
   quoteCreation.innerHTML = `
@@ -120,9 +133,13 @@ function dummygetCharacterQuotes(){
 
   // console.log(dummyData[i].quote);   
   }
+  if(animetitle !==""){ //if anime title is not empty. This title is pulled from Anime Chan API. 
+    MAL_AnimeNameSearch(); //MAL API search for anime titles
+  }
 };
 
 function MAL_AnimeNameSearch(){  //Using RapidAPI, to grab MAL API.
+  console.log("MAL_AnimeNameSearch is running");
   let MAL_animesearch = animetitle.replace(/ /g, "%20");//repace any spacing with "%20", required for MAL API search. 
 
   const settings = {
@@ -140,6 +157,7 @@ function MAL_AnimeNameSearch(){  //Using RapidAPI, to grab MAL API.
   };
 
   $.ajax(settings).then(function (dataMAL) { //pulling character data from MAL_data. 
+    console.log(dataMAL);
     // let animetitle = [];
     for (i=0;i<dataMAL.length;i++){ 
         animeIDlist.push(dataMAL[i].myanimelist_id); //input anime ID into array
@@ -147,20 +165,24 @@ function MAL_AnimeNameSearch(){  //Using RapidAPI, to grab MAL API.
     }
     // animeID_title = animetitle.map((title, index) => {return { title, id: animeID[index] };})  //combines 2arrays (anime title & ID) into an array object.
     //if animeID is blank, no anime found. stops function. 
-    if(animeIDlist.length ===0){ 
+    if(animeIDlist.length ==0){ 
+      return;
     }
     else{
-      console.log("anime found");
+      // console.log("anime found");
       MAL_IDsearch(animeIDlist[0]);
-      // for(i=0;i<animeID.length; i++){  //note to self: This is dangerous. Could ramp up API numbers too quickly. 
-      //   MAL_IDsearch(animeID[i]);
-      //   // if(results===true){break}; //break out of MAL_IDsearch() loop, if character name is found.
-      //   }
+
+      // for(i=0;i<animeIDlist.length; i++){  //note to self: This is dangerous. Could ramp up API numbers too quickly. 
+      //   let result = MAL_IDsearch(animeID[i]);
+      //   if (result) break;
+        // if(results===true){break}; //break out of MAL_IDsearch() loop, if character name is found.
+        // }
       }
   });
 };
 
 function MAL_IDsearch(animeID){  //Using RapidAPI, to grab MAL API.
+  console.log("MAL_IDsearch is running");
     const settings = {
         async: true,
         crossDomain: true,
@@ -172,8 +194,8 @@ function MAL_IDsearch(animeID){  //Using RapidAPI, to grab MAL API.
 
         }
     };
-    $.ajax(settings).done(function (response) { //pulling character data from MAL_data. 
-        let dataMAL2= response;  //storing received data into dataMAL2
+    $.ajax(settings).done(function (dataMAL2) { //pulling character data from MAL_data. 
+      console.log(dataMAL2);
         let arraylength = dataMAL2.characters.length; //check how many characters are in the array. 
         let charName =[], charid =[], charURL = [];
 
@@ -201,11 +223,14 @@ function MAL_IDsearch(animeID){  //Using RapidAPI, to grab MAL API.
 };
 
 function Jikan_CharacterImageSearch(characterID) {
+  console.log("Jikan_CharacterImageSearch is running");
   fetch(`https://api.jikan.moe/v4/characters/${characterID}`) //jikan API data fetch, using character ID from MAL API. 
     .then((response) => response.json())
     .then(function (Jikandata) {
-      let photoURL = Jikandata.data.images.jpg.image_url; //photo url for the character
+      photoURL = Jikandata.data.images.jpg.image_url; //photo url for the character
       $("#quotesimg").attr("src", photoURL); //adds image into html
+      // $("#photohere").attr("src", photoURL); //adds image into html
+      $(".badge").css("background-image", `url(${photoURL})`);
       console.log("image pulled: "+ photoURL);
     });
 };
@@ -250,12 +275,12 @@ function handleSearch() {
 
 updateSearchHistory();
 
-
-
 button.addEventListener("click", function(){
-  getCharacterQuotes();  //currently commented out to prevent overusage of API. 
+  reset();
+
   searchedcharacter = $('#searchBox').val();
-  // dummygetCharacterQuotes();  //fake quote function. used to keep api fresh. 
+  // getCharacterQuotes();  //currently commented out to prevent overusage of API. 
+  dummygetCharacterQuotes();  //fake quote function. used to keep api fresh. 
   handleSearch(); //search history function. 
   // if(animetitle !==""){ //if anime title is not empty. This title is pulled from Anime Chan API. 
   //   MAL_AnimeNameSearch(); //MAL API search for anime titles
