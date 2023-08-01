@@ -1,44 +1,43 @@
-// animetitletest = "one punch man";
-// let characterID = ""; //characterID, that MAL API and Jikan API use. 
-// let characterlist = []; 
-// let searchedcharacter =""; 
-// let animeID_title = []; // array for MAL_AnimeNameSearch() to input data into
-// let animeID = []; //array for MAL_AnimeNameSearch() to input data into
-// let animeIDlist = []; // array for MAL API to input data into
+animetitletest = "one punch man";
+let characterID = ""; //characterID, that MAL API and Jikan API use. 
+let characterlist = []; 
+let searchedcharacter =""; 
+let animeID_title = []; // array for MAL_AnimeNameSearch() to input data into
+let animeID = [52807]; //array for MAL_AnimeNameSearch() to input data into
+let animeIDlist = []; // array for MAL API to input data into
 
-// function MAL_AnimeNameSearch(){  //Using RapidAPI, to grab MAL API.
-//     let MAL_animesearch = animetitletest.replace(/ /g, "%20");//repace any spacing with "%20", required for MAL API search. 
+function MAL_AnimeNameSearch(){  //Using RapidAPI, to grab MAL API.
+    let MAL_animesearch = animetitletest.replace(/ /g, "%20");//repace any spacing with "%20", required for MAL API search. 
   
-//     const settings = {
-//       async: true,
-//       crossDomain: true,
-//       url: `https://myanimelist.p.rapidapi.com/anime/search/${MAL_animesearch}/5`, //MAL API Link.
-//     // url: 'https://myanimelist.p.rapidapi.com/anime/search/One%20punch%20man',
-//       //other searchable link below: 
-//       // url: `https://myanimelist.p.rapidapi.com/anime/${animeID}`   //search via animeID
-//       // url: `https://myanimelist.p.rapidapi.com/anime/search/${anime_name}/${page}` //page = display how many page results.
-//       method: 'GET',
-//       headers: {
-//           'X-RapidAPI-Key': '852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7',
-//           'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
-//       }
-//     };
-//     $.ajax(settings).done(function (response) { //pulling character data from MAL_data. 
-//         let dataMAL = response;
-//         console.log(response);
+    const settings = {
+      async: true,
+      crossDomain: true,
+    //   url: `https://myanimelist.p.rapidapi.com/anime/search/${MAL_animesearch}/5`, //MAL API Link.
+    // url: 'https://myanimelist.p.rapidapi.com/anime/search/One%20punch%20man',
+      //other searchable link below: 
+      url: `https://myanimelist.p.rapidapi.com/anime/31772`,   //search via animeID
+      // url: `https://myanimelist.p.rapidapi.com/anime/search/${anime_name}/${page}` //page = display how many page results.
+      method: 'GET',
+      headers: {
+          'X-RapidAPI-Key': '852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7',
+          'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
+      }
+    };
+    $.ajax(settings).done(function (response) { //pulling character data from MAL_data. 
+        let dataMAL = response;
+        console.log(response);
     
-//         let animetitle = [];
-//         for (i=0;i<dataMAL.length;i++){ 
-//             animeID.push(dataMAL[i].myanimelist_id); //input anime ID into array
-//             // animetitle.push(dataMAL[i].title) //input anime title into array
-//         }
-//         // animeID_title = animetitle.map((title, index) => {return { title, id: animeID[index] };})  //combines 2arrays (anime title & ID) into an array object.
-//       });
+        let animetitle = [];
+        for (i=0;i<dataMAL.length;i++){ 
+            animeID.push(dataMAL[i].myanimelist_id); //input anime ID into array
+            // animetitle.push(dataMAL[i].title) //input anime title into array
+        }
+        // animeID_title = animetitle.map((title, index) => {return { title, id: animeID[index] };})  //combines 2arrays (anime title & ID) into an array object.
+      });
 
-//       console.log("MAL_AnimeNameSearch() is working properly. " + animeID);
-// } 
-
-// MAL_AnimeNameSearch();
+      console.log("MAL_AnimeNameSearch() is working properly. " + animeID);
+} 
+MAL_AnimeNameSearch();
 
 // let aabc = [
 //     {
@@ -536,3 +535,176 @@ testcharacterlist = [
 //     console.log(data);
 // });
 
+
+{
+    "picture_url": "https://cdn.myanimelist.net/images/anime/1452/97840.jpg",
+    "alternative_titles": {
+        "english": "One Punch Man Specials",
+        "japanese": "ワンパンマン",
+        "spanish": "One Punch Man: Ovas"
+    },
+    "information": {
+        "studios": [
+            {
+                "url": "https://myanimelist.net/anime/producer/11/Madhouse",
+                "name": "Madhouse"
+            }
+        ],
+        "aired": "Dec 24, 2015 to May 27, 2016",
+        "source": "Web manga",
+        "status": "Finished Airing",
+        "producers": "None",
+        "genres": [
+            {
+                "url": "https://myanimelist.net/anime/genre/1/Action",
+                "name": "Action"
+            },
+            {
+                "url": "https://myanimelist.net/anime/genre/4/Comedy",
+                "name": "Comedy"
+            }
+        ],
+        "genre": "None",
+        "premiered": "None",
+        "licensors": [
+            {
+                "url": "https://myanimelist.net/anime/producer/119/VIZ_Media",
+                "name": "VIZ Media"
+            }
+        ],
+        "theme": "None",
+        "broadcast": "None",
+        "demographic": [
+            {
+                "url": "https://myanimelist.net/anime/genre/42/Seinen",
+                "name": "Seinen"
+            }
+        ],
+        "episodes": "6",
+        "rating": "R - 17+ (violence & profanity)",
+        "duration": "12 min. per ep.",
+        "themes": [
+            {
+                "url": "https://myanimelist.net/anime/genre/50/Adult_Cast",
+                "name": "Adult Cast"
+            },
+            {
+                "url": "https://myanimelist.net/anime/genre/20/Parody",
+                "name": "Parody"
+            },
+            {
+                "url": "https://myanimelist.net/anime/genre/31/Super_Power",
+                "name": "Super Power"
+            }
+        ],
+        "type": [
+            {
+                "url": "https://myanimelist.nethttps://myanimelist.net/topanime.php?type=special",
+                "name": "Special"
+            }
+        ]
+    },
+    "statistics": {
+        "popularity": 728,
+        "favorites": 425,
+        "score": 7.7,
+        "members": 309887,
+        "ranked": 1164
+    },
+    "title_en": "",
+    "characters": [
+        {
+            "myanimelist_url": "https://myanimelist.net/character/73935/Saitama",
+            "voice_actor_myanimelist_url": "https://myanimelist.net/people/17635/Makoto_Furukawa",
+            "picture_url": "https://cdn.myanimelist.net/r/42x62/images/characters/11/294388.jpg?s=a56fc5484b23811f3308aad1dc7b8b2e",
+            "name": "Saitama",
+            "voice_actor_name": "Furukawa, Makoto",
+            "voice_actor_picture_url": "https://cdn.myanimelist.net/r/42x62/images/voiceactors/3/74503.jpg?s=32feef499daea673ae4a3406b09dca18"
+        },
+        {
+            "myanimelist_url": "https://myanimelist.net/character/73979/Genos",
+            "voice_actor_myanimelist_url": "https://myanimelist.net/people/20156/Kaito_Ishikawa",
+            "picture_url": "https://cdn.myanimelist.net/r/42x62/images/characters/9/297329.jpg?s=1dd6cf2edbb45d8bd1e654541226901d",
+            "name": "Genos",
+            "voice_actor_name": "Ishikawa, Kaito",
+            "voice_actor_picture_url": "https://cdn.myanimelist.net/r/42x62/images/voiceactors/3/73776.jpg?s=cd6c229e835d6273a2e5eaf6c9a8f7e0"
+        },
+        {
+            "myanimelist_url": "https://myanimelist.net/character/81929/Tatsumaki",
+            "voice_actor_myanimelist_url": "https://myanimelist.net/people/6686/Aoi_Yuuki",
+            "picture_url": "https://cdn.myanimelist.net/r/42x62/images/characters/8/296110.jpg?s=e6e307ea2289b2d5b74a407668a52483",
+            "name": "Tatsumaki",
+            "voice_actor_name": "Yuuki, Aoi",
+            "voice_actor_picture_url": "https://cdn.myanimelist.net/r/42x62/images/voiceactors/3/67808.jpg?s=3074a08319fa6f05424eed1f508e2233"
+        },
+        {
+            "myanimelist_url": "https://myanimelist.net/character/81931/Fubuki",
+            "voice_actor_myanimelist_url": "https://myanimelist.net/people/869/Saori_Hayami",
+            "picture_url": "https://cdn.myanimelist.net/r/42x62/images/characters/10/473637.jpg?s=7ed26a04a631d8f3175a8ee4b29932fa",
+            "name": "Fubuki",
+            "voice_actor_name": "Hayami, Saori",
+            "voice_actor_picture_url": "https://cdn.myanimelist.net/r/42x62/images/voiceactors/1/66041.jpg?s=67c9ecfc03dd71f99e58d4cfbfe40765"
+        },
+        {
+            "myanimelist_url": "https://myanimelist.net/character/74167/Speed-o-Sound_Sonic",
+            "voice_actor_myanimelist_url": "https://myanimelist.net/people/672/Yuuki_Kaji",
+            "picture_url": "https://cdn.myanimelist.net/r/42x62/images/characters/2/294250.jpg?s=5cc41f3b4143928a0a665407b4db76be",
+            "name": "Speed-o'-Sound Sonic",
+            "voice_actor_name": "Kaji, Yuuki",
+            "voice_actor_picture_url": "https://cdn.myanimelist.net/r/42x62/images/voiceactors/2/66416.jpg?s=91e56f66a0be72a89dff77e0d8ec55ce"
+        },
+        {
+            "myanimelist_url": "https://myanimelist.net/character/94239/King",
+            "voice_actor_myanimelist_url": "https://myanimelist.net/people/25/Hiroki_Yasumoto",
+            "picture_url": "https://cdn.myanimelist.net/r/42x62/images/characters/5/295005.jpg?s=68df50f95bd6ffeb1553a7a8e652e1b8",
+            "name": "King",
+            "voice_actor_name": "Yasumoto, Hiroki",
+            "voice_actor_picture_url": "https://cdn.myanimelist.net/r/42x62/images/voiceactors/2/42158.jpg?s=7b70fcd60f26e4669cc945e4fde4b08d"
+        },
+        {
+            "myanimelist_url": "https://myanimelist.net/character/127446/Metal_Bat",
+            "voice_actor_myanimelist_url": "https://myanimelist.net/people/98/Wataru_Hatano",
+            "picture_url": "https://cdn.myanimelist.net/r/42x62/images/characters/12/296538.jpg?s=8555fd08e39b12f1af6bdda61eb7f9df",
+            "name": "Metal Bat",
+            "voice_actor_name": "Hatano, Wataru",
+            "voice_actor_picture_url": "https://cdn.myanimelist.net/r/42x62/images/voiceactors/3/64697.jpg?s=ed241aecedd7a9ee460bbc3989b6b966"
+        },
+        {
+            "myanimelist_url": "https://myanimelist.net/character/86029/Puripuri_Prisoner",
+            "voice_actor_myanimelist_url": "https://myanimelist.net/people/173/Masaya_Onosaka",
+            "picture_url": "https://cdn.myanimelist.net/r/42x62/images/characters/15/296951.jpg?s=67627c9c169a49e7c66799f82204a47b",
+            "name": "Puripuri Prisoner",
+            "voice_actor_name": "Onosaka, Masaya",
+            "voice_actor_picture_url": "https://cdn.myanimelist.net/r/42x62/images/voiceactors/3/14617.jpg?s=167ecdb5da1b0399a866939f1474bc81"
+        },
+        {
+            "myanimelist_url": "https://myanimelist.net/character/81141/Bang",
+            "voice_actor_myanimelist_url": "https://myanimelist.net/people/6755/Kazuhiro_Yamaji",
+            "picture_url": "https://cdn.myanimelist.net/r/42x62/images/characters/2/492973.jpg?s=15c64fa6b5bb2b6f7eb680ea7febc551",
+            "name": "Bang",
+            "voice_actor_name": "Yamaji, Kazuhiro",
+            "voice_actor_picture_url": "https://cdn.myanimelist.net/r/42x62/images/voiceactors/1/62790.jpg?s=08fb6675496541c6b1f30f00d31a8e7e"
+        },
+        {
+            "myanimelist_url": "https://myanimelist.net/character/127454/Zombieman",
+            "voice_actor_myanimelist_url": "https://myanimelist.net/people/79/Takahiro_Sakurai",
+            "picture_url": "https://cdn.myanimelist.net/r/42x62/images/characters/9/295004.jpg?s=815782ac5831639306c1e6d04ae9794d",
+            "name": "Zombieman",
+            "voice_actor_name": "Sakurai, Takahiro",
+            "voice_actor_picture_url": "https://cdn.myanimelist.net/r/42x62/images/voiceactors/3/62791.jpg?s=e63f4d0ee3e5817a7017f3ce182d040d"
+        }
+    ],
+    "synopsis": "Specials included in the Blu-ray and DVD releases of One Punch Man.",
+    "title_ov": "One Punch Man Specials"
+}
+
+
+[
+    {
+        "myanimelist_url": "https://myanimelist.net/anime/527/Pokemon",
+        "title": "Pokemon",
+        "description": "Pokémon are peculiar creatures with a vast array of different abilities and appearances; many people, known as Pokémon trainers, capture and train them, often with the intent of battling others. Young...read more.",
+        "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/13/73834.jpg?s=23ec360714bd4c5c8e603ae6d8e6b034",
+        "myanimelist_id": 527
+    }
+]
