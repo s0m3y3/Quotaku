@@ -101,6 +101,17 @@ li{
     box-shadow: 0px 0.5rem 1rem rgba(0, 0, 0, .5);
     transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
 }
+.button{
+    height: 30px;
+}
+
+#indent{
+    text-indent: 10px;
+}
+
+#character_name{
+    font-size: 20px;
+}
 
 /* Quotes Display (background) */
 .quotes {

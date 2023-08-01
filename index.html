@@ -25,25 +25,25 @@
                 <a class="navbar-item js-modal-trigger" data-target="modal-js-example">
                     About
                 </a>
-                
+
                 <div id="modal-js-example" class="modal is-static">
                     <div class="modal-background ">
                         <div class="modal-content">
-                           <div class="box">
-                            <p class="title is-1">About Us</p>
-                            <figure class="image is-400x400">
-                                <img class="is-rounded" src="./assets/quotaku logo.png">
-                            </figure>
-                            <p>We sure do like our question marks!</p>
-                            <p class="subtitle is-4">??????????????????????????????????????????</p>
+                            <div class="box">
+                                <p class="title is-1">About Us</p>
+                                <figure class="image is-400x400">
+                                    <img class="is-rounded" src="./assets/quotaku logo.png">
+                                </figure>
+                                <p>We sure do like our question marks!</p>
+                                <p class="subtitle is-4">??????????????????????????????????????????</p>
+                            </div>
                         </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
                     </div>
-                    <button class="modal-close is-large" aria-label="close"></button>
-                </div>
 
-                <!--end form-->
+                    <!--end form-->
+                </div>
             </div>
-        </div>
     </nav>
 
     <section id="columns" class="columns">
@@ -52,14 +52,14 @@
 
         <section class="searchBar column">
             <div>
-                <div>
+                <div id="indent">
                     <div>
                         <div>
                             <h2 class="subtitle is-3">Search your Character here!</h2>
                         </div>
                         <br>
                         <section class="characterSearch">
-                            <label for="searchBox"> Character Name:</label>
+                            <label for="searchBox" id="character_name"> Character Name:</label>
                             <input type="search" id="searchBox" name="???">
                             <button class="button is-link" , id="btn" ,
                                 placeholder="enter character name">Search</button>
@@ -90,7 +90,7 @@
                     <span class="closeQuotes">&times;</span>
                     <p class="subtitle is-3">Quotes:</p>
                     <img class="quotesimg" src="https://placewaifu.com/image/200?greyscale" id="quotesimg" />
-                    <h5 class="id="charactername"></h5>
+                    <h5 class="id=" charactername"></h5>
                     <p class="has-text-weight-semibold is-size-5" id="characters">
                         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
                         <script src="script.js"></script>
@@ -101,29 +101,29 @@
 
             <script>
                 var modal = document.getElementById("quotesForm");
-                
+
                 var btn = document.getElementById("quotesBadge");
 
                 var span = document.getElementsByClassName("closeQuotes")[0];
 
-                btn.onclick = function() {
-                 modal.style.display = "block";
+                btn.onclick = function () {
+                    modal.style.display = "block";
                 }
-                span.onclick = function() {
-                  modal.style.display = "none";
-                }
-                
-                window.onclick = function(event) {
-                  if (event.target == modal) {
+                span.onclick = function () {
                     modal.style.display = "none";
-                  }
                 }
-            
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
             </script>
 
         </main><!--end results display-->
     </section>
-<script src="script_c.js"></script>
+    <script src="script_c.js"></script>
 </body>
 
 </html>
