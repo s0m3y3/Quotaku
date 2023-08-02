@@ -85,6 +85,7 @@ const dummyData = [
 //workingCharacterList = ["saitama","bulma"];
 
 function reset() {
+  //clears out variables
   quotesList = [];
   animeID = [];
   characterID = [];
@@ -94,15 +95,18 @@ function reset() {
   animeIDlist = [];
   photoURL = "./assets/imageplaceholder1.jpg";
   $("#characters").empty();
+  $("#charactername").empty();
 }
 
 function imageDefault() {
+  //provi
   // $(".badge").css("background-image", "url(/assets/imageplaceholder1.jpg)");
   $("#quotesimg").attr("src", "./assets/imageplaceholder1.jpg");
 }
 
 function getCharacterQuotes() {
   fetch(
+    //fetch Character Quotes
     "https://animechan.xyz/api/quotes/character?name=" +
       document.getElementById("searchBox").value
   )
@@ -124,7 +128,8 @@ function getCharacterQuotes() {
       $("#charactername").val(data[0].character);
       $("#quotesimg").attr("src", photoURL); //adds image into html
 
-      if(animetitle !==""){ //if anime title is not empty. This title is pulled from Anime Chan API. 
+      if (animetitle !== "") {
+        //if anime title is not empty. This title is pulled from Anime Chan API.
 
         MAL_AnimeNameSearch(); //MAL API search for anime titles
       }
@@ -133,6 +138,7 @@ function getCharacterQuotes() {
       //}
     })
     .catch(function () {
+      //Catches error
       $("#invalidcheck").text("Invalid Character! Please try again!");
     });
 }
@@ -153,7 +159,8 @@ function dummygetCharacterQuotes() {
   // $("#charactername").val(searchedcharacter);
   $("#quotesimg").attr("src", photoURL); //adds image into html
   $(".badge").css("background-image", `url(${photoURL})`);
-  if(animetitle !==""){ //if anime title is not empty. This title is pulled from Anime Chan API. 
+  if (animetitle !== "") {
+    //if anime title is not empty. This title is pulled from Anime Chan API.
 
     MAL_AnimeNameSearch(); //MAL API search for anime titles
   }
@@ -174,7 +181,7 @@ function MAL_AnimeNameSearch() {
     method: "GET",
     headers: {
       // "X-RapidAPI-Key": "852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7", //Y.Y
-      "X-RapidAPI-Key": "fffe315f72mshd5fceec7212aa6fp1c03edjsnb6614b02df7a", //D.T. 
+      "X-RapidAPI-Key": "fffe315f72mshd5fceec7212aa6fp1c03edjsnb6614b02df7a", //D.T.
       "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
     },
   };
@@ -214,7 +221,7 @@ function MAL_IDsearch(animeID) {
     method: "GET",
     headers: {
       // "X-RapidAPI-Key": "852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7",  //Y.Y
-      "X-RapidAPI-Key": "fffe315f72mshd5fceec7212aa6fp1c03edjsnb6614b02df7a", //D.T. 
+      "X-RapidAPI-Key": "fffe315f72mshd5fceec7212aa6fp1c03edjsnb6614b02df7a", //D.T.
       "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
     },
   };
@@ -244,36 +251,37 @@ function MAL_IDsearch(animeID) {
       return { name, id: charid[index] };
     }); //combines two arrays (character name & character ID) into array objects
 
-    //Filter1. Looks for exact 'matched' name. If search "Saitama", the API data must also be exactly "Saitama." But our data filters the string as lowercase. 
-    for (let cl of characterlist) { 
+    //Filter1. Looks for exact 'matched' name. If search "Saitama", the API data must also be exactly "Saitama." But our data filters the string as lowercase.
+    for (let cl of characterlist) {
       // Loop through the array to find the object with the name as "searchedcharacter"
       // results = false;
       if (cl.name.toLowerCase() == searchedcharacter.toLowerCase()) {
-        console.log("Character input, found match in MAL API database. Onto image search API.")
+        console.log(
+          "Character input, found match in MAL API database. Onto image search API."
+        );
         characterID = cl.id;
         results = true;
         Jikan_CharacterImageSearch(characterID); //this function finds image of character.
         break; // If found, stop loop
-      }
-      else {
+      } else {
         console.log("Filter#1 failed. Running Filter#2");
-      //Filter2: If searched "ichigo" and data has "Kurosaki, Ichigo", will use that data results (Note: This will not be perfect if there are multiple last name.) 
+        //Filter2: If searched "ichigo" and data has "Kurosaki, Ichigo", will use that data results (Note: This will not be perfect if there are multiple last name.)
         for (let i = 0; i < charName.length; i++) {
-          if (charName[i].toLowerCase().includes(searchedcharacter.toLowerCase())) {
-            console.log("Filter#2 completed: "+ i);
+          if (
+            charName[i].toLowerCase().includes(searchedcharacter.toLowerCase())
+          ) {
+            console.log("Filter#2 completed: " + i);
             Jikan_CharacterImageSearch(charid[i]); //this function finds image of character.
             break;
-          }    
-          else{
+          } else {
             console.log("Filter#2 failed.");
-            //Filter3: 
+            //Filter3:
           }
         }
       }
     }
-  })
-};
-
+  });
+}
 
 function Jikan_CharacterImageSearch(characterID) {
   console.log("Jikan_CharacterImageSearch is running");
@@ -337,7 +345,7 @@ button.addEventListener("click", function () {
   reset();
 
   searchedcharacter = $("#searchBox").val();
-  
+
   $("#characters").empty();
   $("#invalidcheck").empty();
   getCharacterQuotes(); //currently commented out to prevent overusage of API.
