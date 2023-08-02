@@ -1,96 +1,168 @@
-animetitle = "";
+// photoURL = "./assets/imageplaceholder1.jpg"
+// nametest = "SailorMoon"
 
-function MAL_AnimeNameSearch(){  //Using RapidAPI, to grab MAL API.
-    console.log("MAL_AnimeNameSearch is running");
-    let MAL_animesearch = animetitle.replace(/ /g, "%20");//repace any spacing with "%20", required for MAL API search. 
-  
-    const settings = {
-      async: true,
-      crossDomain: true,
-      url: `https://myanimelist.p.rapidapi.com/anime/search/${MAL_animesearch}`, //MAL API Link
-      //other searchable link below: 
-      // url: `https://myanimelist.p.rapidapi.com/anime/${animeID}`   //search via animeID
-      // url: `https://myanimelist.p.rapidapi.com/anime/search/${anime_name}/${page}` //page = display how many page results.
-      method: 'GET',
-      headers: {
-          'X-RapidAPI-Key': '852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7',
-          'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
-      },
-    //   error: function (error) {
-    //     console.log("Error at MAL_AnimeNameSearch(): "+ error);
-    //     $("#quotesimg").attr("src", './assets/imageplaceholder1.jpg'); //adds image into html
-    //     // ... handle the error here ...
-    //   }
-    };
-  
-    $.ajax(settings)
-    .done(function (dataMAL) { //pulling character data from MAL_data. 
-      console.log(dataMAL);
-      // let animetitle = [];
-      if(dataMAL.includes("404")){
-        console.log("1 dataMAL is blank, or not working.");
-        $("#quotesimg").attr("src", './assets/imageplaceholder1.jpg');
-      }
+// function testme(){
+// $("#charactername").append(nametest);
+// $("#quotesimg").attr("src", photoURL); //adds image into html
+// abc = document.getElementById("charactername");
+// // abc.text("testing character name");
+// };
+// testme();
 
-      for (i=0;i<dataMAL.length;i++){ 
-          animeIDlist.push(dataMAL[i].myanimelist_id); //input anime ID into array
-          // animetitle.push(dataMAL[i].title) //input anime title into array
-      }
-      console.log("animeIDlist:");
-      console.log(animeIDlist);
-    })
-    .fail(function(){
-        conole.log("3 dataMAL is blank, or not working.");
-        $("#quotesimg").attr("src", './assets/imageplaceholder1.jpg');
-    })
+chartest00 = [
+  "Kurosaki, Ichigo",
+  "Kuchiki, Rukia",
+  "Abarai, Renji",
+  "Ishida, Uryuu",
+  "Kokuto",
+  "Hitsugaya, Toushirou",
+  "Cifer, Ulquiorra",
+  "Kuchiki, Byakuya",
+  "Inoue, Orihime",
+  "Matsumoto, Rangiku"
+]
+
+char00 = "Abarai, Renji";
+console.log(char00);
+foundIndex = -1;
+for (let i = 0; i < chartest00.length; i++) {
+  if (chartest00[i].toLowerCase().includes(char00.toLowerCase())) {
+    foundIndex = i;
+    console.log(foundIndex);
+    break;
+  }
+}
+console.log("test");
+regrex = "/[ ,_]+/"
+char00_split = char00.toLowerCase().split(",");
+console.log("split results: "+char00_split);
+console.log(typeof char00_split);
+console.log(char00_split[0]);
+for (i=0; i<chartest00.length; i++){
+  chartest00_split = chartest00[i].toLowerCase().split(",");
+  console.log("trimmed: "+chartest00_split[0].trim());
+  for(j=0; j<chartest00_split.length;j++){
+    if(chartest00_split[j]==char00_split[0] || chartest00_split[j]==char00_split[1]){
+      console.log("line43-44 loop works: true. "+chartest00_split[j]+" is "+ char00_split[0]);
+    }
+    else{
+      // console.log("line43-44loop failed. "+chartest00_split[j]+" .is not. "+ char00_split[0]);
+    }
+    if(chartest00_split[j]==char00_split[1] || chartest00_split[j]==char00_split[1]){
+      console.log("line50 loop works: true. "+chartest00_split[j]+" .is. "+ char00_split[1]);
+    }
+    else{
+      // console.log("line50 loop failed. "+chartest00_split[j]+" .is not. "+ char00_split[1]);
+    }
+
+  }
+}
+
+
+// button.addEventListener("click", function () {
+//   reset();
+
+//   searchedcharacter = $("#searchBox").val();
+//   $("#characters").empty();
+//   getCharacterQuotes(); //currently commented out to prevent overusage of API.
+//   handleSearch(); //search history function.
+
+// });
+
+
+
+// animetitle = "";
+
+// function MAL_AnimeNameSearch(){  //Using RapidAPI, to grab MAL API.
+//     console.log("MAL_AnimeNameSearch is running");
+//     let MAL_animesearch = animetitle.replace(/ /g, "%20");//repace any spacing with "%20", required for MAL API search. 
+  
+//     const settings = {
+//       async: true,
+//       crossDomain: true,
+//       url: `https://myanimelist.p.rapidapi.com/anime/search/${MAL_animesearch}`, //MAL API Link
+//       //other searchable link below: 
+//       // url: `https://myanimelist.p.rapidapi.com/anime/${animeID}`   //search via animeID
+//       // url: `https://myanimelist.p.rapidapi.com/anime/search/${anime_name}/${page}` //page = display how many page results.
+//       method: 'GET',
+//       headers: {
+//           'X-RapidAPI-Key': '852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7',
+//           'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
+//       },
+//     //   error: function (error) {
+//     //     console.log("Error at MAL_AnimeNameSearch(): "+ error);
+//     //     $("#quotesimg").attr("src", './assets/imageplaceholder1.jpg'); //adds image into html
+//     //     // ... handle the error here ...
+//     //   }
+//     };
+  
+//     $.ajax(settings)
+//     .done(function (dataMAL) { //pulling character data from MAL_data. 
+//       console.log(dataMAL);
+//       // let animetitle = [];
+//       if(dataMAL.includes("404")){
+//         console.log("1 dataMAL is blank, or not working.");
+//         $("#quotesimg").attr("src", './assets/imageplaceholder1.jpg');
+//       }
+
+//       for (i=0;i<dataMAL.length;i++){ 
+//           animeIDlist.push(dataMAL[i].myanimelist_id); //input anime ID into array
+//           // animetitle.push(dataMAL[i].title) //input anime title into array
+//       }
+//       console.log("animeIDlist:");
+//       console.log(animeIDlist);
+//     })
+//     .fail(function(){
+//         conole.log("3 dataMAL is blank, or not working.");
+//         $("#quotesimg").attr("src", './assets/imageplaceholder1.jpg');
+//     })
     
-    // error(function() {
-    //     conole.log("4 dataMAL is blank, or not working.");
-    //     $("#quotesimg").attr("src", './assets/imageplaceholder1.jpg');
-    // })
-};
-
-MAL_AnimeNameSearch();
+//     // error(function() {
+//     //     conole.log("4 dataMAL is blank, or not working.");
+//     //     $("#quotesimg").attr("src", './assets/imageplaceholder1.jpg');
+//     // })
+// };
+// MAL_AnimeNameSearch();
 
 
 //MAL anime search using "one punch man" data 
-MAL_onepunchman_animesearch = [
-    {
-        "myanimelist_url": "https://myanimelist.net/anime/34134/One_Punch_Man_2nd_Season",
-        "title": "One Punch Man 2nd Season",
-        "description": "In the wake of defeating Boros and his mighty army, Saitama has returned to his unremarkable everyday life in Z-City. However, unbeknownst to him, the number of monsters appearing is still continuousl...read more.",
-        "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/1247/122044.jpg?s=8b1f9ee697c9d30f0f268ab363d36835",
-        "myanimelist_id": 34134
-    },
-    {
-        "myanimelist_url": "https://myanimelist.net/anime/31772/One_Punch_Man_Specials",
-        "title": "One Punch Man Specials",
-        "description": "Specials included in the Blu-ray and DVD releases of One Punch Man.",
-        "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/1452/97840.jpg?s=2ba3ee89bb332f3de604650370affe83",
-        "myanimelist_id": 31772
-    },
-    {
-        "myanimelist_url": "https://myanimelist.net/anime/30276/One_Punch_Man",
-        "title": "One Punch Man",
-        "description": "The seemingly unimpressive Saitama has a rather unique hobby: being a hero. In order to pursue his childhood dream, Saitama relentlessly trained for three years, losing all of his hair in the process....read more.",
-        "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/12/76049.jpg?s=40b6c7dbbbb94c44675116d301150078",
-        "myanimelist_id": 30276
-    },
-    {
-        "myanimelist_url": "https://myanimelist.net/anime/39652/One_Punch_Man_2nd_Season_Commemorative_Special",
-        "title": "One Punch Man 2nd Season Commemorative Special",
-        "description": "One Punch Man 2nd Season's commemorative recap special.",
-        "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/1550/123539.jpg?s=f5db3be62c7a4051c0d7dfaf953f5b78",
-        "myanimelist_id": 39652
-    },
-    {
-        "myanimelist_url": "https://myanimelist.net/anime/52807/One_Punch_Man_3",
-        "title": "One Punch Man 3",
-        "description": "Third season of One Punch Man.",
-        "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/1885/127108.jpg?s=3fdb3c1d81249b1c1cafda23cf17e3c6",
-        "myanimelist_id": 52807
-    }
-];
+// MAL_onepunchman_animesearch = [
+//     {
+//         "myanimelist_url": "https://myanimelist.net/anime/34134/One_Punch_Man_2nd_Season",
+//         "title": "One Punch Man 2nd Season",
+//         "description": "In the wake of defeating Boros and his mighty army, Saitama has returned to his unremarkable everyday life in Z-City. However, unbeknownst to him, the number of monsters appearing is still continuousl...read more.",
+//         "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/1247/122044.jpg?s=8b1f9ee697c9d30f0f268ab363d36835",
+//         "myanimelist_id": 34134
+//     },
+//     {
+//         "myanimelist_url": "https://myanimelist.net/anime/31772/One_Punch_Man_Specials",
+//         "title": "One Punch Man Specials",
+//         "description": "Specials included in the Blu-ray and DVD releases of One Punch Man.",
+//         "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/1452/97840.jpg?s=2ba3ee89bb332f3de604650370affe83",
+//         "myanimelist_id": 31772
+//     },
+//     {
+//         "myanimelist_url": "https://myanimelist.net/anime/30276/One_Punch_Man",
+//         "title": "One Punch Man",
+//         "description": "The seemingly unimpressive Saitama has a rather unique hobby: being a hero. In order to pursue his childhood dream, Saitama relentlessly trained for three years, losing all of his hair in the process....read more.",
+//         "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/12/76049.jpg?s=40b6c7dbbbb94c44675116d301150078",
+//         "myanimelist_id": 30276
+//     },
+//     {
+//         "myanimelist_url": "https://myanimelist.net/anime/39652/One_Punch_Man_2nd_Season_Commemorative_Special",
+//         "title": "One Punch Man 2nd Season Commemorative Special",
+//         "description": "One Punch Man 2nd Season's commemorative recap special.",
+//         "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/1550/123539.jpg?s=f5db3be62c7a4051c0d7dfaf953f5b78",
+//         "myanimelist_id": 39652
+//     },
+//     {
+//         "myanimelist_url": "https://myanimelist.net/anime/52807/One_Punch_Man_3",
+//         "title": "One Punch Man 3",
+//         "description": "Third season of One Punch Man.",
+//         "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/1885/127108.jpg?s=3fdb3c1d81249b1c1cafda23cf17e3c6",
+//         "myanimelist_id": 52807
+//     }
+// ];
 // // https://api.jikan.moe/v4/characters/73935/full   //link for jikan character ID search. Most helpful.  
 
 //Dummy Data below is a pull from MAL, using anime ID of 34134. 
@@ -549,12 +621,5 @@ salormoon_ID530 = {
     "title_ov": "Bishoujo Senshi Sailor Moon"
   }
 
-  [
-    {
-        "myanimelist_url": "https://myanimelist.net/anime/49566/Nuan_Yang",
-        "title": "Nuan Yang",
-        "description": "A healing work about mutual salvation and joint efforts.",
-        "picture_url": "https://cdn.myanimelist.net/r/50x70/images/anime/1593/117197.jpg?s=2de32bc3e24483823dd9403ecf17a692",
-        "myanimelist_id": 49566
-    }
-]
+
+
