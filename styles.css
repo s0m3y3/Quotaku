@@ -10,6 +10,14 @@
     
 }
     
+#invalidcheck{
+    font-size:40px;
+}
+
+#invalidcheck{
+    font-size: 22px;
+}
+
 h1{
     color: black;
 }
@@ -25,6 +33,10 @@ h3.subtitle{
 h4.subtitle{
     margin: 35px;
    
+}
+
+h5.title {
+    margin: 30px;
 }
 
 p{

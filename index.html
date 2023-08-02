@@ -29,35 +29,36 @@
                 <div id="modal-js-example" class="modal is-static">
                     <div class="modal-background ">
                         <div class="modal-content">
-                           <div class="box">
-                            <figure class="image is-400x400">
-                                <img class="is-rounded" src="./assets/quotaku_logo.png">
-                            </figure>
-                            <p>   </p>
-                            <p>Quotaku is an application that allows you to search an anime character and get quotes that they have said in their roles.</p>
-                            <p> by Dtrieu1, svnkite, s0m3y3, & biancawonka. </p>
-                            <p></p>
-                            <p>P.S.</p>
-                            <p>We really like question marks.</p>
+                            <div class="box">
+                                <figure class="image is-400x400">
+                                    <img class="is-rounded" src="./assets/quotaku_logo.png">
+                                </figure>
+                                <p> </p>
+                                <p>Quotaku is an application that allows you to search an anime character and get quotes
+                                    that they have said in their roles.</p>
+                                <p> by Dtrieu1, svnkite, s0m3y3, & biancawonka. </p>
+                                <p></p>
+                                <p>P.S.</p>
+                                <p>We really like question marks.</p>
 
-                            <a class="button is-link has-background-grey" href="https://github.com/Dtrieu1">
-                                Dtrieu1's Github
-                            </a>
+                                <a class="button is-link has-background-grey" href="https://github.com/Dtrieu1">
+                                    Dtrieu1's Github
+                                </a>
 
-                            <a class="button is-link has-background-grey" href="https://github.com/s0m3y3">
-                                s0m3y3's Github
-                            </a>
-                            
+                                <a class="button is-link has-background-grey" href="https://github.com/s0m3y3">
+                                    s0m3y3's Github
+                                </a>
 
-                            <a class="button is-link has-background-grey" href="https://github.com/svnkite">
-                                svnkite's Github
-                            </a>
 
-                            <p class="is-size-20">???</p>
+                                <a class="button is-link has-background-grey" href="https://github.com/svnkite">
+                                    svnkite's Github
+                                </a>
+
+                                <p class="is-size-20">???</p>
+                            </div>
                         </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
                     </div>
-                    <button class="modal-close is-large" aria-label="close"></button>
-                </div>
 
                     <!--end form-->
                 </div>
@@ -79,11 +80,13 @@
                         <section class="characterSearch">
                             <label class="is-size-3" for="searchBox" id="character_name"> Character Name:</label>
                             <input class="input is-rounded" style="width: 65%" type="text" id="searchBox" />
-                            <button class="button is-rounded is-size-6 is-dark" style="height: 10%" id="btn" placeholder="enter character name">Search</button>
+                            <button class="button is-rounded is-size-6 is-dark" style="height: 10%" id="btn"
+                                placeholder="enter character name">Search</button>
                         </section>
                     </div>
                     <br>
                     <section class="previousResults">
+                        <h3 id="invalidcheck"></h3>
                         <h3 class="subtitle is-4"> Previous Search Results</h3>
                         <div id="lastResults"></div>
                     </section>
