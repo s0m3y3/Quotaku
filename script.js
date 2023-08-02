@@ -200,7 +200,8 @@ function MAL_AnimeNameSearch() {
       return;
     } else {
       // console.log("anime found");
-      MAL_IDsearch(animeIDlist[0]);
+      let AnimeIDIndex = findIndexOfSmallestNumber(animeIDlist);
+      MAL_IDsearch(animeIDlist[AnimeIDIndex]);
 
       // for(i=0;i<animeIDlist.length; i++){  //note to self: This is dangerous. Could ramp up API numbers too quickly.
       //   let result = MAL_IDsearch(animeID[i]);
@@ -273,9 +274,19 @@ function MAL_IDsearch(animeID) {
             console.log("Filter#2 completed: " + i);
             Jikan_CharacterImageSearch(charid[i]); //this function finds image of character.
             break;
-          } else {
-            console.log("Filter#2 failed.");
-            //Filter3:
+          } 
+          else {
+            console.log("Filter#2 failed. Filter#3 pending.");
+             //Filter3.0: This assumes string with "_" underscore. For example: "Kurosaki_Ichigo". Replace "_" with " " (space), then repeats filter#2.  
+            //Filter3.1: Then, it filters any commas. For Example "Kurosaki, Ichigo". Replace "," with "" (no-space).
+            let  charNameFilter3 = charName.map(item => item.replace(/_/g, ' ')); //Filter 3.0
+            charNameFilter3 = charNameFilter3.map(item => item.replace(/,/g, '')); //Filter 3.1
+            if (charNameFilter3[i].toLowerCase().includes(searchedcharacter.toLowerCase())) {
+              console.log("Filter#3 Success: " +i);
+              Jikan_CharacterImageSearch(charid[i]); //this function finds image of character.
+              break;
+            }
+            console.log("All three filters failed at MAL_IDsearch(animeID).");   
           }
         }
       }
@@ -294,6 +305,17 @@ function Jikan_CharacterImageSearch(characterID) {
       console.log("image pulled: " + photoURL);
     });
 }
+
+//function that returns the smallest number within an array. To be used to filter anime ID titles. I believe smaller number will have higher changes of character IDs. 
+function findIndexOfSmallestNumber(arr) {
+  let smallestIndex = 0;
+  for (let i = 1; i < arr.length; i++) { //loops through array. Look to see if number is smaller, if yes then replace, else skip. 
+    if (arr[i] < arr[smallestIndex]) {
+      smallestIndex = i;
+    }
+  }
+  return smallestIndex; //returns smallest number as an index within inputted "arr" or array. 
+};
 
 // search history codes below:
 let searchHistory = JSON.parse(localStorage.getItem("searchHistory")); // Load search history from Local Storage.
