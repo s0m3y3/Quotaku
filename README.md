@@ -21,7 +21,7 @@ Select the previewed character and you would see the dynamic image and quotes:
 
 ## Set-up:
 
-Bulma - CSS Framework
+Bulma - CSS Framework.
 
 ## Contributors:
 
