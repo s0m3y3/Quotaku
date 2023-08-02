@@ -174,7 +174,7 @@ function MAL_AnimeNameSearch() {
   const settings = {
     async: true,
     crossDomain: true,
-    url: `https://myanimelist.p.rapidapi.com/anime/search/${MAL_animesearch}`, //MAL API Link
+    url: `https://myanimelist.p.rapidapi.com/anime/search/${MAL_animesearch}/10`, //MAL API Link
     //other searchable link below:
     // url: `https://myanimelist.p.rapidapi.com/anime/${animeID}`   //search via animeID
     // url: `https://myanimelist.p.rapidapi.com/anime/search/${anime_name}/${page}` //page = display how many page results.
