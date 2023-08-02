@@ -11,13 +11,13 @@ Let us do the work so you have more time watching those favorite shows!
 ## Walkthrough:
 
 When you land on the Quotaku homepage, you would look for the search text box.
-![Alt text](image-5.png)
+![Alt text](./Images/image-5.png)
 Enter the character that you are interested in looking into further:
-![Alt text](image-1.png)
+![Alt text](./Images/image-1.png)
 Select "Search" and you would see the preview photo of the character should be populated based upon user input:
-![Alt text](image-2.png)
+![Alt text](./Images/image-2.png)
 Select the previewed character and you would see the dynamic image and quotes:
-![Alt text](image-4.png)
+![Alt text](./Images/image-4.png)
 
 ## Set-up:
 
