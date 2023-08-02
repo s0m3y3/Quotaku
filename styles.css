@@ -1,5 +1,8 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
 
+body {
+    background-color: rgba(215, 126, 30, 0.5);
+}
 .navbar
 {
     background-color: rgba(193, 114, 28, 0.5);
@@ -77,9 +80,10 @@ li{
 .badge {
     display: block;
     position: relative;
-    margin-left: 70px;
-    width: 20rem;
-    height: 20rem;
+    margin: 100px;
+    margin-left: 300px;
+    width: 40rem;
+    height: 40rem;
     cursor: pointer;
     background: url(https://placewaifu.com/image) no-repeat 100% 50%;
     background-size: 120%;
@@ -95,24 +99,24 @@ li{
 .badge-text:hover {
     transform: rotate(-45deg) translate(0px) rotate(-315deg);
     background: rgba(215, 126, 30, 0.5);
-    width: 20rem;
+    width: 40rem;
     letter-spacing: 1rem;
-    line-height: 20rem;
-    height: 20rem;
-    margin-top: -10rem;
-    margin-left: -10rem;
+    line-height: 40rem;
+    height: 40rem;
+    margin-top: -20rem;
+    margin-left: -20rem;
     transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1), letter-spacing 1.5s ease-out;
 }
 .badge-text {
     display: block;
     position: absolute;
-    width: 10rem;
-    height: 10rem;
-    line-height: 10rem;
+    width: 20rem;
+    height: 20rem;
+    line-height: 20rem;
     left: 50%;
     top: 50%;
-    margin-top: -5rem;
-    margin-left: -5rem;
+    margin-top: 0rem;
+    margin-left: 0rem;
     font-size: 2rem;
     font-family: Raleway, sans-serif;
     text-align: center;
