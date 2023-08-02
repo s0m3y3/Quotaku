@@ -93,6 +93,7 @@ function reset() {
   animetitle = "";
   animeIDlist = [];
   photoURL = "./assets/imageplaceholder1.jpg";
+  $("#characters").empty();
 }
 
 function imageDefault() {
@@ -122,9 +123,11 @@ function getCharacterQuotes() {
       }
       $("#charactername").val(data[0].character);
       $("#quotesimg").attr("src", photoURL); //adds image into html
-      $(".badge").css("background-image", `url(${photoURL})`);
-      //if (animetitle !== "") {
-      //if anime title is not empty. This title is pulled from Anime Chan API.
+
+      if(animetitle !==""){ //if anime title is not empty. This title is pulled from Anime Chan API. 
+
+        MAL_AnimeNameSearch(); //MAL API search for anime titles
+      }
 
       //MAL_AnimeNameSearch(); //MAL API search for anime titles
       //}
@@ -147,8 +150,11 @@ function dummygetCharacterQuotes() {
 
     // console.log(dummyData[i].quote);
   }
-  if (animetitle !== "") {
-    //if anime title is not empty. This title is pulled from Anime Chan API.
+  // $("#charactername").val(searchedcharacter);
+  $("#quotesimg").attr("src", photoURL); //adds image into html
+  $(".badge").css("background-image", `url(${photoURL})`);
+  if(animetitle !==""){ //if anime title is not empty. This title is pulled from Anime Chan API. 
+
     MAL_AnimeNameSearch(); //MAL API search for anime titles
   }
 }
@@ -167,7 +173,8 @@ function MAL_AnimeNameSearch() {
     // url: `https://myanimelist.p.rapidapi.com/anime/search/${anime_name}/${page}` //page = display how many page results.
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7",
+      // "X-RapidAPI-Key": "852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7", //Y.Y
+      "X-RapidAPI-Key": "fffe315f72mshd5fceec7212aa6fp1c03edjsnb6614b02df7a", //D.T. 
       "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
     },
   };
@@ -206,7 +213,8 @@ function MAL_IDsearch(animeID) {
     url: `https://myanimelist.p.rapidapi.com/anime/${animeID}`, //search via animeID
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7",
+      // "X-RapidAPI-Key": "852cf6fe87msh345bf55d7f1604cp186a82jsn7a44f88d0cf7",  //Y.Y
+      "X-RapidAPI-Key": "fffe315f72mshd5fceec7212aa6fp1c03edjsnb6614b02df7a", //D.T. 
       "X-RapidAPI-Host": "myanimelist.p.rapidapi.com",
     },
   };
@@ -224,6 +232,7 @@ function MAL_IDsearch(animeID) {
       charURL.push(dataMAL2.characters[i].myanimelist_url); //adds character url into array. The URL also contains character ID.
       charName.push(dataMAL2.characters[i].name); //adds character name into array.
     }
+    console.log(charName);
 
     charid = charURL.map((url) => {
       //separate the character ID from character url. using regrex.
@@ -235,18 +244,36 @@ function MAL_IDsearch(animeID) {
       return { name, id: charid[index] };
     }); //combines two arrays (character name & character ID) into array objects
 
-    for (let cl of characterlist) {
+    //Filter1. Looks for exact 'matched' name. If search "Saitama", the API data must also be exactly "Saitama." But our data filters the string as lowercase. 
+    for (let cl of characterlist) { 
       // Loop through the array to find the object with the name as "searchedcharacter"
       // results = false;
       if (cl.name.toLowerCase() == searchedcharacter.toLowerCase()) {
+        console.log("Character input, found match in MAL API database. Onto image search API.")
         characterID = cl.id;
         results = true;
         Jikan_CharacterImageSearch(characterID); //this function finds image of character.
         break; // If found, stop loop
       }
+      else {
+        console.log("Filter#1 failed. Running Filter#2");
+      //Filter2: If searched "ichigo" and data has "Kurosaki, Ichigo", will use that data results (Note: This will not be perfect if there are multiple last name.) 
+        for (let i = 0; i < charName.length; i++) {
+          if (charName[i].toLowerCase().includes(searchedcharacter.toLowerCase())) {
+            console.log("Filter#2 completed: "+ i);
+            Jikan_CharacterImageSearch(charid[i]); //this function finds image of character.
+            break;
+          }    
+          else{
+            console.log("Filter#2 failed.");
+            //Filter3: 
+          }
+        }
+      }
     }
-  });
-}
+  })
+};
+
 
 function Jikan_CharacterImageSearch(characterID) {
   console.log("Jikan_CharacterImageSearch is running");
@@ -310,10 +337,12 @@ button.addEventListener("click", function () {
   reset();
 
   searchedcharacter = $("#searchBox").val();
+  
   $("#characters").empty();
   $("#invalidcheck").empty();
   getCharacterQuotes(); //currently commented out to prevent overusage of API.
   //dummygetCharacterQuotes(); //fake quote function. used to keep api fresh.
+
   handleSearch(); //search history function.
   // if(animetitle !==""){ //if anime title is not empty. This title is pulled from Anime Chan API.
   //   MAL_AnimeNameSearch(); //MAL API search for anime titles
