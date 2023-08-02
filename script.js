@@ -95,9 +95,9 @@ function reset() {
   photoURL = "./assets/imageplaceholder1.jpg";
 }
 
-function imageDefault(){
+function imageDefault() {
   // $(".badge").css("background-image", "url(/assets/imageplaceholder1.jpg)");
-  $("#quotesimg").attr("src", './assets/imageplaceholder1.jpg');
+  $("#quotesimg").attr("src", "./assets/imageplaceholder1.jpg");
 }
 
 function getCharacterQuotes() {
@@ -123,11 +123,14 @@ function getCharacterQuotes() {
       $("#charactername").val(data[0].character);
       $("#quotesimg").attr("src", photoURL); //adds image into html
       $(".badge").css("background-image", `url(${photoURL})`);
-      if(animetitle !==""){ //if anime title is not empty. This title is pulled from Anime Chan API. 
+      //if (animetitle !== "") {
+      //if anime title is not empty. This title is pulled from Anime Chan API.
 
-        MAL_AnimeNameSearch(); //MAL API search for anime titles
-      }
-
+      //MAL_AnimeNameSearch(); //MAL API search for anime titles
+      //}
+    })
+    .catch(function () {
+      $("#invalidcheck").text("Invalid Character! Please try again!");
     });
 }
 
@@ -215,7 +218,6 @@ function MAL_IDsearch(animeID) {
     let charName = [];
     let charid = [];
     let charURL = [];
-
 
     for (i = 0; i < arraylength; i++) {
       //loop to add character URL & character to their respective array
@@ -309,6 +311,7 @@ button.addEventListener("click", function () {
 
   searchedcharacter = $("#searchBox").val();
   $("#characters").empty();
+  $("#invalidcheck").empty();
   getCharacterQuotes(); //currently commented out to prevent overusage of API.
   //dummygetCharacterQuotes(); //fake quote function. used to keep api fresh.
   handleSearch(); //search history function.
